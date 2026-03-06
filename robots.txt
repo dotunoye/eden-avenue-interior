@@ -1,0 +1,45 @@
+# Eden Avenue Interiors - robots.txt
+# Robots exclusion standard for web crawlers
+
+# Allow all user agents to crawl
+User-agent: *
+Allow: /
+
+# Specific rules for common search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://edenaveinteriors.com/sitemap.xml
+
+# Standard crawl rules
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /*.pdf$
+Disallow: /cgi-bin/
+
+# Allow crawling of assets
+Allow: /css/
+Allow: /js/
+Allow: /images/
