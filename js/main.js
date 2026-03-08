@@ -345,6 +345,61 @@ if (window.innerWidth < 768) {
   }
 }
 
+function initProcessTimeline() {
+  const imageWraps = document.querySelectorAll('.process__image-wrap');
+  const phases = document.querySelectorAll('.process__phase');
+
+  if (!imageWraps.length) return;
+
+  // Add indicators
+  const indicatorContainer = document.createElement('div');
+  indicatorContainer.className = 'process__indicators';
+  imageWraps.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'process__indicator' + (i === 0 ? ' active' : '');
+    indicatorContainer.appendChild(dot);
+  });
+  document.querySelector('.process__right')?.appendChild(indicatorContainer);
+
+  const indicators = document.querySelectorAll('.process__indicator');
+
+  function setActive(index) {
+    // Images
+    imageWraps.forEach((wrap, i) => {
+      wrap.classList.toggle('active', i === index);
+    });
+
+    // Text phases
+    phases.forEach((phase, i) => {
+      phase.classList.toggle('active', i === index);
+    });
+
+    // Indicators
+    indicators.forEach((ind, i) => {
+      ind.classList.toggle('active', i === index);
+    });
+  }
+
+  // Activate first by default
+  setActive(0);
+
+  // Observe each image
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const index = parseInt(entry.target.dataset.phase);
+        setActive(index);
+      }
+    });
+  }, {
+    threshold: 0.5,
+    rootMargin: '0px 0px -35% 0px'
+  });
+
+  imageWraps.forEach(wrap => observer.observe(wrap));
+}
+
+initProcessTimeline();
 // function initScrollStory() {
 //   const imageWraps = document.querySelectorAll('.story-image-wrap');
 //   const storyItems = document.querySelectorAll('.story-item');
