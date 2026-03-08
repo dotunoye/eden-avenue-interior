@@ -205,6 +205,7 @@ function initNavigation() {
       hamburger.classList.toggle('active');
       mobileMenu.classList.toggle('active');
     });
+    document.body.style.overflow = 'hidden';
   }
 
   // Close mobile menu on link click
@@ -217,6 +218,7 @@ function initNavigation() {
         mobileMenu.classList.remove('active');
       }
     });
+    document.body.style.overflow = '';
   });
 
   // Set active nav link based on current page
@@ -240,29 +242,122 @@ function setActiveNavLink() {
   });
 }
 
+/* ========== TYPEWRITER EFFECT ========== */
+
+/**
+ * Initialize typewriter effect for hero text
+ */
+function initTypewriter() {
+  const typedEl = document.querySelector('.hero__typed');
+  if (!typedEl) return;
+
+  const words = ['Memories.', 'Experiences.', 'Homes.'];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const currentWord = words[wordIndex];
+
+    if (!isDeleting) {
+      // Typing
+      typedEl.textContent = currentWord.slice(0, charIndex + 1);
+      charIndex++;
+
+      if (charIndex === currentWord.length) {
+        // Fully typed — pause then start deleting
+        setTimeout(() => {
+          isDeleting = true;
+          type();
+        }, 2200);
+        return;
+      }
+
+      setTimeout(type, 90);
+
+    } else {
+      // Deleting
+      typedEl.textContent = currentWord.slice(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        // Fully deleted — move to next word
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(type, 400);
+        return;
+      }
+
+      setTimeout(type, 55);
+    }
+  }
+
+  // Start after initial delay
+  setTimeout(type, 800);
+}
+
 /* ========== SCROLL ANIMATIONS ========== */
 
 /**
- * Initialize Intersection Observer for fade-up animations
+ * Initialize scroll animations with Intersection Observer
  */
 function initScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
+const targets = [
+  // Backstory — slide in from sides
+  { selector: '.backstory__image-wrap', anim: 'slide-left' },
+  { selector: '.backstory__text', anim: 'slide-right' },
 
+  // What We Do header — fade up only
+  { selector: '.wwd__header', anim: 'fade-up' },
+
+  // What We Do splits — fade up instead of slide
+  { selector: '.wwd__split--normal .wwd__image-wrap', anim: 'fade-up' },
+  { selector: '.wwd__split--normal .wwd__text', anim: 'fade-up' },
+  { selector: '.wwd__split--reverse .wwd__text', anim: 'fade-down' },
+  { selector: '.wwd__split--reverse .wwd__image-wrap', anim: 'fade-down' },
+
+  // Bento — scale up only
+  { selector: '.bento__header', anim: 'fade-up' },
+  { selector: '.bento-card', anim: 'scale-up' },
+
+  // Process header — fade up
+  { selector: '.process__header', anim: 'fade-up' },
+
+  // Testimonials — fade up
+  { selector: '.testimonials__header', anim: 'fade-up' },
+  { selector: '.testimonial-card', anim: 'fade-up' },
+
+  // CTA — scale up
+  { selector: '.cta-banner__inner', anim: 'scale-up' },
+];
+
+  // Apply animation classes
+  targets.forEach(({ selector, anim }) => {
+    document.querySelectorAll(selector).forEach((el, index) => {
+      el.classList.add('anim', `anim--${anim}`);
+
+      // Stagger delay for cards and testimonials
+      if (anim === 'scale-up' || anim === 'fade-up') {
+        el.style.transitionDelay = `${index * 0.08}s`;
+      }
+    });
+  });
+
+  // Observe
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        entry.target.classList.add('anim--visible');
+      }else {
+      entry.target.classList.remove('anim--visible');
       }
     });
-  }, observerOptions);
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -50px 0px'
+  });
 
-  // Observe all elements with fade-up class
-  const fadeUpElements = document.querySelectorAll('.fade-up');
-  fadeUpElements.forEach(el => observer.observe(el));
+  document.querySelectorAll('.anim').forEach(el => observer.observe(el));
 }
 
 /* ========== PAGE INITIALIZATION ========== */
@@ -291,6 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize interactive features
   initModal();
   initNavigation();
+  initTypewriter();
   initScrollAnimations();
 });
 
@@ -337,7 +433,6 @@ document.addEventListener('error', (e) => {
 if (window.innerWidth < 768) {
   const video = document.querySelector('.hero-video__bg');
   if (video) {
-    video.style.display = 'none';
     const section = document.querySelector('.hero-video');
     section.style.backgroundImage = 'url("images/hero-poster.jpg")';
     section.style.backgroundSize = 'cover';
@@ -346,6 +441,33 @@ if (window.innerWidth < 768) {
 }
 
 function initProcessTimeline() {
+
+    if (window.innerWidth < 768) {
+    const images = document.querySelectorAll('.process__image-wrap');
+    const phases = document.querySelectorAll('.process__phase');
+    const left = document.querySelector('.process__left');
+    const right = document.querySelector('.process__right');
+    const body = document.querySelector('.process__body');
+
+    // Create a new wrapper
+    const mobileWrapper = document.createElement('div');
+    mobileWrapper.className = 'process__mobile';
+
+    images.forEach((img, i) => {
+      const block = document.createElement('div');
+      block.className = 'process__mobile-block';
+      block.appendChild(img.cloneNode(true));
+      if (phases[i]) block.appendChild(phases[i].cloneNode(true));
+      mobileWrapper.appendChild(block);
+    });
+
+    // Replace body content
+    left.style.display = 'none';
+    right.style.display = 'none';
+    body.appendChild(mobileWrapper);
+    return; // Skip parallax logic on mobile
+  }
+
   const imageWraps = document.querySelectorAll('.process__image-wrap');
   const phases = document.querySelectorAll('.process__phase');
 

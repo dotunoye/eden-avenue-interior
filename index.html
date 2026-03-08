@@ -47,9 +47,9 @@
   <!-- Floating Pill Navigation -->
   <nav class="pill-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <div class="logo">
+      <div class="logo"><a href="index.html">
         <img class="logo-img" src="assets/eden logo.png" alt="">
-        
+        </a>
       </div>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
@@ -60,11 +60,11 @@
         <li><a href="flooring.html">Flooring</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+      <div class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </button>
+      </div>
     </div>
   </nav>
 
@@ -92,46 +92,53 @@
     playsinline
     preload="metadata"
     poster="images/hero-poster.jpg">
-    <source src="assets/hero.mp4" type="video/mp4">
+    <source src="assets/hero2.mp4" type="video/mp4">
   </video>
   <div class="hero-video__overlay"></div>
   <div class="hero-video__content">
-    <p class="hero-tagline">Creating Great Memories</p>
-    <span class="hero-sub">One Space at a Time</span>
+    <div class="hero__text">
+      <p class="hero__static">We Transform Spaces Into</p>
+      <h1 class="hero__typewriter">
+        <span class="hero__typed"></span>
+        <span class="hero__cursor">|</span>
+      </h1>
+    </div>
   </div>
 </section>
 
     <!-- ══ BACKSTORY SECTION ══ -->
-<section class="backstory">
-  <div class="backstory__inner">
+<div class = "section-wrap">
+  <section class="backstory">
+    <div class="backstory__inner">
 
-    <div class="backstory__image-wrap">
-      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=80"
-           alt="Eden Avenue Interiors signature project"
-           loading="lazy" width="900" height="700">
-      <div class="backstory__image-tag">
-        <span>Est. 2019</span>
-        <span>Lagos, Nigeria</span>
+      <div class="backstory__image-wrap">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=80"
+            alt="Eden Avenue Interiors signature project"
+            loading="lazy" width="900" height="700">
+        <div class="backstory__image-tag">
+          <span>Est. 2019</span>
+          <span>Lagos, Nigeria</span>
+        </div>
       </div>
-    </div>
 
-    <div class="backstory__text">
-      <span class="section-eyebrow">Our Story</span>
-      <h2 class="backstory__heading">Spaces that feel like <em>you</em></h2>
-      <p class="backstory__body">Eden Avenue Interiors was born from a simple but powerful belief that the spaces we live and work in should tell our stories. Founded in 2019, we set out to create interiors that go beyond aesthetics, designing environments that are deeply personal, thoughtfully crafted, and built to last.</p>
-      <p class="backstory__body">From our first project in Lagos to dozens of residential and commercial spaces across Nigeria, our approach has never changed impeccable attention to detail, always within your budget.</p>
-      <div class="backstory__quote">
-        <blockquote>"We don't just design rooms. We design the way you live in them."</blockquote>
+      <div class="backstory__text">
+        <span class="section-eyebrow">Our Story</span>
+        <h2 class="backstory__heading">Spaces that feel like <em>you</em></h2>
+        <p class="backstory__body">Eden Avenue Interiors was born from a simple but powerful belief that the spaces we live and work in should tell our stories. Founded in 2019, we set out to create interiors that go beyond aesthetics, designing environments that are deeply personal, thoughtfully crafted, and built to last.</p>
+        <p class="backstory__body">From our first project in Lagos to dozens of residential and commercial spaces across Nigeria, our approach has never changed impeccable attention to detail, always within your budget.</p>
+        <div class="backstory__quote">
+          <blockquote>"We don't just design rooms. We design the way you live in them."</blockquote>
+        </div>
+        <a href="about.html" class="btn-teal btn-pill">Meet the Team</a>
       </div>
-      <a href="about.html" class="btn-teal btn-pill">Meet the Team</a>
-    </div>
 
-  </div>
-</section>
+    </div>
+  </section>
+</div>
 
 <!-- ══ WHAT WE DO SECTION ══ -->
+ <div class="section-wrap">
 <section class="what-we-do">
-
   <div class="wwd__header">
     <span class="section-eyebrow">What We Do</span>
     <h2>Every space. Every detail. <em>Every time.</em></h2>
@@ -235,8 +242,9 @@
     </div>
   </div>
 </section>
-
-<section class="bento-stats">
+</div>
+<div class = "section-wrap">
+  <section class="bento-stats">
   <div class="bento__header">
   <h2>The Eden <em>Heritage</em></h2>
   <p>Five years of transforming spaces, building trust and delivering excellence across Lagos and beyond.</p>
@@ -314,8 +322,10 @@
 
   </div>
 </section>
+</div>
 
 <!-- ══ PROCESS SECTION ══ -->
+ <div class="section-wrap">
 <section class="process" id="process">
   <div class="process__inner">
 
@@ -407,6 +417,7 @@
   </main>
 
   <!-- FOOTER -->
+   <div class="section-wrap">
     <footer>
   <div class="container-section">
     <div class="footer-container">
@@ -441,19 +452,7 @@
         </div>
       </div>
 
-      <!-- Quick Links -->
-      <!-- <div class="footer-section">
-        <h4>Explore</h4>
-        <ul class="footer-links">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="interiors.html">Interiors</a></li>
-          <li><a href="homes.html">Homes</a></li>
-          <li><a href="drapes.html">Drapes</a></li>
-          <li><a href="flooring.html">Flooring</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div> -->
-
+      
       <!-- Contact -->
       <div class="footer-section">
         <h4>Get In Touch</h4>
