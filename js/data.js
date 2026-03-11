@@ -210,3 +210,62 @@ window.siteData = {
   ]
 
 };
+
+window.siteData = window.siteData || {};
+
+window.siteData.interiors = [
+  {
+    id: 'int-001',
+    name: 'The Ogudu Residence',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=80',
+    description: 'A complete residential transformation spanning four rooms. Warm neutrals, bespoke furniture and premium finishes define this elegant Lagos home.',
+    location: 'Ogudu GRA, Lagos',
+    priceRange: '₦2,500,000 – ₦4,000,000',
+    featured: true
+  },
+  {
+    id: 'int-002',
+    name: 'Victoria Island Penthouse',
+    image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=900&q=80',
+    description: 'A high-rise penthouse redesigned for a young executive. Clean lines, statement lighting and floor-to-ceiling drapes complete this premium finish.',
+    location: 'Victoria Island, Lagos',
+    priceRange: '₦4,000,000 – ₦7,000,000',
+    featured: true
+  },
+  {
+    id: 'int-003',
+    name: 'Lekki Phase 1 Living',
+    image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80',
+    description: 'A warm, family-focused living and dining space redesigned with comfort and longevity in mind. Every piece sourced locally.',
+    location: 'Lekki Phase 1, Lagos',
+    priceRange: '₦1,800,000 – ₦3,200,000',
+    featured: true
+  },
+  {
+    id: 'int-004',
+    name: 'Ikoyi Apartment',
+    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=80',
+    description: 'A minimalist two-bedroom apartment with a teal and ivory palette. Curated art pieces and bespoke shelving define the space.',
+    location: 'Ikoyi, Lagos',
+    priceRange: '₦2,000,000 – ₦3,500,000',
+    featured: false
+  },
+  {
+    id: 'int-005',
+    name: 'Surulere Family Home',
+    image: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=900&q=80',
+    description: 'A complete home interior for a family of five. Durable materials, smart storage and timeless design delivered on time and within budget.',
+    location: 'Surulere, Lagos',
+    priceRange: '₦1,500,000 – ₦2,800,000',
+    featured: false
+  },
+  {
+    id: 'int-006',
+    name: 'Ikeja GRA Office',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80',
+    description: 'A corporate office redesigned to inspire productivity and impress clients. Open plan with private executive suites and a branded reception area.',
+    location: 'Ikeja GRA, Lagos',
+    priceRange: '₦3,000,000 – ₦5,500,000',
+    featured: false
+  }
+];

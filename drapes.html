@@ -1,55 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta: Character & Viewport -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Premium custom drapes and textiles by Eden Avenue Interiors – sheers, velvet, linen, silk blends in Lagos. Elevate your windows today.">
-  <meta name="keywords" content="drapes, curtains, custom textiles, fabrics, Lagos, interior design">
+  <!-- Meta: SEO -->
+  <meta name="description" content="Eden Avenue Interiors – Premium interior design, luxury homes, custom drapes, and flooring solutions in Lagos. Transform your space into a masterpiece.">
+  <meta name="keywords" content="interior design, luxury homes, drapes, flooring, Lagos, Nigeria">
+  <meta name="author" content="Eden Avenue Interiors">
+  <meta name="robots" content="index, follow">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Custom Drapes & Textiles – Eden Avenue Interiors">
-  <meta property="og:description" content="Premium fabrics for every room. From sheers to luxury velvet – explore our curated collection of drapes and custom window treatments.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&auto=format&fit=crop&q=80">
-  <meta property="og:url" content="https://edenaveinteriors.com/drapes.html">
+  <!-- Meta: Open Graph (Social) -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:title" content="Eden Avenue Interiors – Premium Interior Design & Luxury Homes">
+  <meta property="og:description" content="Creating exceptional interior spaces across Lagos since 2019. Explore our portfolio of residential and commercial projects.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=1200&auto=format&fit=crop&q=80">
+  <meta property="og:url" content="https://edenaveinteriors.com">
+  <meta property="og:site_name" content="Eden Avenue Interiors">
 
+  <!-- Meta: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Custom Drapes & Textiles">
-  <meta name="twitter:description" content="Premium fabrics for every interior design project.">
+  <meta name="twitter:title" content="Eden Avenue Interiors – Premium Interior Design">
+  <meta name="twitter:description" content="Luxury interior design and home solutions in Lagos, Nigeria.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=1200&auto=format&fit=crop&q=80">
 
-  <link rel="canonical" href="https://edenaveinteriors.com/drapes.html">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://edenaveinteriors.com">
+  <link rel="icon" href="assets/eden logo 3.jpg">
+  <!-- Preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1600&auto=format&fit=crop&q=80" fetchpriority="high">
 
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=1600&auto=format&fit=crop&q=80" fetchpriority="high">
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
-  <title>Premium Custom Drapes & Textiles – Eden Avenue Interiors in Lagos</title>
+
+  <!-- Title -->
+  <title>Eden Avenue Interiors – Premium Interior Design & Luxury Homes in Lagos</title>
 </head>
 
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Floating Pill Navigation -->
   <nav class="pill-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <div class="logo">
-        <span class="logo-name">Eden Avenue</span>
-        <span class="logo-tag">Interiors</span>
+      <div class="logo"><a href="index.html">
+        <img class="logo-img" src="assets/eden logo 4.png" alt="">
+        </a>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="interiors.html">Interiors</a></li>
         <li><a href="homes.html">Homes</a></li>
-        <li><a href="drapes.html" class="active">Drapes</a></li>
+        <li><a href="drapes.html">Drapes</a></li>
         <li><a href="flooring.html">Flooring</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+      <div class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </button>
+      </div>
     </div>
   </nav>
 
@@ -114,6 +129,23 @@
         <div id="grid-drapes" class="products-grid" style="margin-top: 48px;"></div>
       </div>
     </section>
+
+    <!-- MODAL -->
+    <div class="portfolio-modal" id="portfolio-modal" role="dialog" aria-modal="true" aria-label="Product details">
+      <div class="portfolio-modal__overlay" id="modal-overlay"></div>
+      <div class="portfolio-modal__box">
+        <button class="portfolio-modal__close" id="modal-close" aria-label="Close modal">&times;</button>
+        <div class="portfolio-modal__image">
+          <img id="modal-image" src="" alt="">
+        </div>
+        <div class="portfolio-modal__content">
+          <h2 class="portfolio-modal__name" id="modal-name"></h2>
+          <p class="portfolio-modal__desc" id="modal-desc"></p>
+          <span class="portfolio-modal__price" id="modal-price"></span>
+          <a href="javascript:void(0);" class="btn-teal btn-pill portfolio-modal__cta">Book a Session</a>
+        </div>
+      </div>
+    </div>
 
     <!-- CTA BANNER -->
     <section class="cta-banner">

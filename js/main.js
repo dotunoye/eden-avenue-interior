@@ -1,9 +1,11 @@
 /* ================================================
    EDEN AVENUE INTERIORS - JAVASCRIPT ENGINE
-   Pure vanilla JS - render functions, modal, navigation
+   Pure vanilla JS: render, modal, nav, animations
    ================================================ */
 
-/* ========== RENDER FUNCTIONS (CMS-Ready) ========== */
+/* ========== RENDER FUNCTIONS - CMS Ready ========== */
+/** These functions accept data as parameters (not accessing window.siteData directly)
+    enabling easy integration with headless CMS (Sanity, Contentful, etc.) */
 
 /**
  * Render portfolio cards (Interiors/Homes)
@@ -15,7 +17,7 @@ function renderPortfolioCards(items, containerId) {
   if (!container) return;
 
   container.innerHTML = items.map(item => `
-    <div class="card"
+    <div class="card portfolio-card"
          role="button"
          tabindex="0"
          aria-label="View ${item.name}"
@@ -23,7 +25,9 @@ function renderPortfolioCards(items, containerId) {
          data-name="${item.name}"
          data-image="${item.image}"
          data-description="${item.description}"
-         data-meta="${item.location}">
+         data-location="${item.location}"
+         data-price="${item.priceRange || ''}"
+         data-desc="${item.description}">
       <div class="card-img-wrap">
         <img src="${item.image}"
              alt="${item.name} - ${item.location}"
@@ -38,6 +42,8 @@ function renderPortfolioCards(items, containerId) {
         <h3 class="card-title">${item.name}</h3>
         <p class="card-location">${item.location}</p>
         <p class="card-desc">${item.description}</p>
+        ${item.priceRange ? `<p class="card-price">${item.priceRange}</p>` : ''}
+        <a href="${generateWhatsAppLink(item.name)}" class="btn-teal btn-pill card-cta" aria-label="Book consultation for ${item.name}">Book a Consultation</a>
       </div>
     </div>
   `).join('');
@@ -53,7 +59,7 @@ function renderProductCards(items, containerId) {
   if (!container) return;
 
   container.innerHTML = items.map(item => `
-    <div class="card"
+    <div class="card portfolio-card"
          role="button"
          tabindex="0"
          aria-label="View ${item.name}"
@@ -61,7 +67,8 @@ function renderProductCards(items, containerId) {
          data-name="${item.name}"
          data-image="${item.image}"
          data-description="${item.description}"
-         data-meta="${item.priceRange}">
+         data-price="${item.priceRange}"
+         data-desc="${item.description}">
       <div class="card-img-wrap">
         <img src="${item.image}"
              alt="${item.name}"
@@ -76,51 +83,42 @@ function renderProductCards(items, containerId) {
         <h3 class="card-title">${item.name}</h3>
         <p class="card-desc">${item.description}</p>
         <p class="card-price">${item.priceRange}</p>
+        <a href="${generateWhatsAppLink(item.name)}" class="btn-teal btn-pill card-cta" aria-label="Book consultation for ${item.name}">Book a Consultation</a>
       </div>
     </div>
   `).join('');
 }
 
-/* ========== MODAL INITIALIZATION & LOGIC ========== */
-
+/* ========== WHATSAPP INTEGRATION ========== */
 /**
- * Initialize modal on page load
+ * Generate WhatsApp link with pre-written message
+ * @param {String} projectName - Name of the project/product
+ * @returns {String} WhatsApp URL
  */
-function initModal() {
-  // Create modal HTML and append to body
-  const modal = document.createElement('div');
-  modal.id = 'card-modal';
-  modal.className = 'modal-overlay';
-  modal.setAttribute('role', 'dialog');
-  modal.setAttribute('aria-modal', 'true');
-  modal.setAttribute('aria-labelledby', 'modal-title');
-  modal.innerHTML = `
-    <div class="modal-container">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-image-wrap">
-        <img id="modal-img"
-             src=""
-             alt=""
-             width="800"
-             height="600">
-      </div>
-      <div class="modal-body">
-        <h2 id="modal-title" class="modal-title"></h2>
-        <p class="modal-desc"></p>
-        <p class="modal-meta"></p>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(modal);
+function generateWhatsAppLink(projectName) {
+  const message = `I saw the ${projectName} on your website and I'd like to book a consultation for something similar.`;
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/2348000000000?text=${encodedMessage}`;
+}
 
-  // Event delegation: open modal on card click, close on overlay/button click
+/* ========== MODAL - Click/Keyboard Activated ========== */
+/** Handles modal activation from existing portfolio-modal HTML structure */
+function initModal() {
+  const portfolio_modal = document.getElementById('portfolio-modal');
+  
+  // Only initialize if portfolio-modal exists in HTML
+  if (!portfolio_modal) return;
+
+  // Event delegation: open modal on card click
   document.addEventListener('click', e => {
     const card = e.target.closest('[data-modal="true"]');
     if (card) {
       openModal(card);
     }
 
-    if (e.target === modal || e.target.classList.contains('modal-close')) {
+    // Close modal: overlay click or close button
+    if (e.target === portfolio_modal.querySelector('.portfolio-modal__overlay') || 
+        e.target.classList.contains('portfolio-modal__close')) {
       closeModal();
     }
   });
@@ -144,31 +142,57 @@ function initModal() {
  * @param {Element} card - The card element
  */
 function openModal(card) {
-  const modal = document.getElementById('card-modal');
-  const img = document.getElementById('modal-img');
-  const title = document.getElementById('modal-title');
-  const desc = modal.querySelector('.modal-desc');
-  const meta = modal.querySelector('.modal-meta');
+  const modal = document.getElementById('portfolio-modal');
+  if (!modal) return;
 
+  const img = modal.querySelector('#modal-image');
+  const name = modal.querySelector('#modal-name');
+  const desc = modal.querySelector('#modal-desc');
+  const location = modal.querySelector('#modal-location');
+  const price = modal.querySelector('#modal-price');
+  const cta = modal.querySelector('.portfolio-modal__cta');
+
+  // Set image
   img.src = card.dataset.image;
-  img.alt = card.dataset.name;
-  title.textContent = card.dataset.name;
-  desc.textContent = card.dataset.description;
-  meta.textContent = card.dataset.meta;
+  img.alt = card.dataset.name || 'Project image';
 
+  // Set text content
+  name.textContent = card.dataset.name || '';
+  desc.textContent = card.dataset.description || '';
+  location.textContent = card.dataset.location || '';
+  
+  // Set price if available
+  if (card.dataset.price) {
+    price.textContent = card.dataset.price;
+    price.style.display = 'block';
+  } else {
+    price.style.display = 'none';
+  }
+
+  // Update WhatsApp CTA button
+  if (cta) {
+    cta.href = generateWhatsAppLink(card.dataset.name);
+    cta.setAttribute('aria-label', `Book consultation via WhatsApp for ${card.dataset.name}`);
+  }
+
+  // Show modal
   modal.classList.add('active');
+  document.body.classList.add('menu-open');
   document.body.style.overflow = 'hidden';
 
-  // Trap focus in modal for accessibility
-  title.focus();
+  // Focus management
+  name.focus();
 }
 
 /**
  * Close modal
  */
 function closeModal() {
-  const modal = document.getElementById('card-modal');
+  const modal = document.getElementById('portfolio-modal');
+  if (!modal) return;
+  
   modal.classList.remove('active');
+  document.body.classList.remove('menu-open');
   document.body.style.overflow = '';
 }
 
@@ -390,172 +414,82 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
 });
 
-/* ========== UTILITY FUNCTIONS ========== */
-
-/**
- * Preload images for better performance
- * @param {String} src - Image URL
- */
-function preloadImage(src) {
-  const img = new Image();
-  img.src = src;
-}
-
-/**
- * Format price for display
- * @param {Number} price - Price in Naira
- * @returns {String} Formatted price
- */
-function formatPrice(price) {
-  return new Intl.NumberFormat('en-NG', {
-    style: 'currency',
-    currency: 'NGN',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }).format(price);
-}
-
 /* ========== ERROR HANDLING ========== */
 
-// Global error handler for async operations
-window.addEventListener('error', (e) => {
-  console.error('Page error:', e.message);
-});
-
-// Handle missing images gracefully
+/** Handle missing/broken images gracefully by hiding them */
 document.addEventListener('error', (e) => {
   if (e.target.tagName === 'IMG') {
     e.target.style.display = 'none';
-    console.warn('Failed to load image:', e.target.src);
+    console.warn('Image failed to load:', e.target.src);
   }
 }, true);
 
-if (window.innerWidth < 768) {
-  const video = document.querySelector('.hero-video__bg');
-  if (video) {
-    const section = document.querySelector('.hero-video');
-    section.style.backgroundImage = 'url("images/hero-poster.jpg")';
-    section.style.backgroundSize = 'cover';
-    section.style.backgroundPosition = 'center';
-  }
+function renderPortfolioGrid(containerId, items) {
+  const container = document.getElementById(containerId);
+  if (!container || !items) return;
+
+  container.innerHTML = items.map(item => `
+    <div class="portfolio-card" 
+         data-id="${item.id}"
+         data-name="${item.name || ''}"
+         data-image="${item.image}"
+         data-location="${item.location || ''}"
+         data-desc="${item.description || ''}"
+         data-price="${item.priceRange || ''}"
+         tabindex="0"
+         role="button"
+         aria-label="View ${item.name || 'project'} details">
+      <div class="portfolio-card__image">
+        <img src="${item.image}" alt="${item.name || 'Eden Avenue project'}" loading="lazy">
+      </div>
+      <div class="portfolio-card__info">
+        <div class="portfolio-card__meta">
+          ${item.name ? `<h3 class="portfolio-card__name">${item.name}</h3>` : ''}
+          ${item.location ? `<span class="portfolio-card__location">${item.location}</span>` : ''}
+        </div>
+        <a class="portfolio-card__cta">Book a Session</a>
+      </div>
+    </div>
+  `).join('');
+
+  // Attach click events
+  container.querySelectorAll('.portfolio-card').forEach(card => {
+    card.addEventListener('click', () => openPortfolioModal(card.dataset));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter') openPortfolioModal(card.dataset);
+    });
+  });
 }
 
-function initProcessTimeline() {
+function openPortfolioModal(data) {
+  document.getElementById('modal-image').src = data.image;
+  document.getElementById('modal-image').alt = data.name || 'Project image';
+  document.getElementById('modal-name').textContent = data.name || '';
+  document.getElementById('modal-location').textContent = data.location || '';
+  document.getElementById('modal-desc').textContent = data.desc || '';
+  document.getElementById('modal-price').textContent = data.price || '';
 
-    if (window.innerWidth < 768) {
-    const images = document.querySelectorAll('.process__image-wrap');
-    const phases = document.querySelectorAll('.process__phase');
-    const left = document.querySelector('.process__left');
-    const right = document.querySelector('.process__right');
-    const body = document.querySelector('.process__body');
-
-    // Create a new wrapper
-    const mobileWrapper = document.createElement('div');
-    mobileWrapper.className = 'process__mobile';
-
-    images.forEach((img, i) => {
-      const block = document.createElement('div');
-      block.className = 'process__mobile-block';
-      block.appendChild(img.cloneNode(true));
-      if (phases[i]) block.appendChild(phases[i].cloneNode(true));
-      mobileWrapper.appendChild(block);
-    });
-
-    // Replace body content
-    left.style.display = 'none';
-    right.style.display = 'none';
-    body.appendChild(mobileWrapper);
-    return; // Skip parallax logic on mobile
-  }
-
-  const imageWraps = document.querySelectorAll('.process__image-wrap');
-  const phases = document.querySelectorAll('.process__phase');
-
-  if (!imageWraps.length) return;
-
-  // Add indicators
-  const indicatorContainer = document.createElement('div');
-  indicatorContainer.className = 'process__indicators';
-  imageWraps.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'process__indicator' + (i === 0 ? ' active' : '');
-    indicatorContainer.appendChild(dot);
-  });
-  document.querySelector('.process__right')?.appendChild(indicatorContainer);
-
-  const indicators = document.querySelectorAll('.process__indicator');
-
-  function setActive(index) {
-    // Images
-    imageWraps.forEach((wrap, i) => {
-      wrap.classList.toggle('active', i === index);
-    });
-
-    // Text phases
-    phases.forEach((phase, i) => {
-      phase.classList.toggle('active', i === index);
-    });
-
-    // Indicators
-    indicators.forEach((ind, i) => {
-      ind.classList.toggle('active', i === index);
-    });
-  }
-
-  // Activate first by default
-  setActive(0);
-
-  // Observe each image
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const index = parseInt(entry.target.dataset.phase);
-        setActive(index);
-      }
-    });
-  }, {
-    threshold: 0.5,
-    rootMargin: '0px 0px -35% 0px'
-  });
-
-  imageWraps.forEach(wrap => observer.observe(wrap));
+  const modal = document.getElementById('portfolio-modal');
+  modal.classList.add('active');
+  document.body.classList.add('menu-open');
 }
 
-initProcessTimeline();
-// function initScrollStory() {
-//   const imageWraps = document.querySelectorAll('.story-image-wrap');
-//   const storyItems = document.querySelectorAll('.story-item');
+function closePortfolioModal() {
+  const modal = document.getElementById('portfolio-modal');
+  modal.classList.remove('active');
+  document.body.classList.remove('menu-open');
+}
 
-//   if (!imageWraps.length) return;
+// Close triggers
+document.getElementById('modal-close')?.addEventListener('click', closePortfolioModal);
+document.getElementById('modal-overlay')?.addEventListener('click', closePortfolioModal);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePortfolioModal();
+});
 
-//   // Activate first item by default
-//   storyItems[0]?.classList.add('active');
-
-//   const observer = new IntersectionObserver((entries) => {
-//     entries.forEach(entry => {
-//       if (entry.isIntersecting) {
-//         const index = entry.target.dataset.index;
-
-//         // Deactivate all
-//         storyItems.forEach(item => item.classList.remove('active'));
-
-//         // Activate matching text item
-//         const activeItem = document.querySelector(`.story-item[data-index="${index}"]`);
-//         activeItem?.classList.add('active');
-//       }
-//     });
-//   }, {
-//     threshold: 0.5,
-//     rootMargin: '0px 0px -20% 0px'
-//   });
-
-//   imageWraps.forEach(wrap => observer.observe(wrap));
-// }
-
-// // Call inside DOMContentLoaded
-// document.addEventListener('DOMContentLoaded', () => {
-//   // ... your existing render calls ...
-//   initScrollStory();
-// });
+// Init
+if (document.getElementById('grid-interiors')) {
+  renderPortfolioGrid('grid-interiors', window.siteData.interiors);
+}
 
 /* End of main.js */
