@@ -3546,85 +3546,124 @@ button, a.btn, input, textarea, select {
 /* ──────────────────────────────────────────────────────── */
 
 .values-scroll-container {
-  height: 500vh;
+  height: 600vh;
   position: relative;
+  background: #1A1A1A;
+}
+
+.values-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  text-align: center;
+  padding: 100px 24px 20px;
+  flex-shrink: 0;
+}
+
+.values-header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-top: 8px;
+}
+
+.values-header h2 em {
+  font-style: italic;
+  color: #008080;
 }
 
 .values-sticky {
-  position: sticky;
+   position: sticky;
   top: 0;
-  height: 100vh;
-  background: white;
+  height: 100svh;
   overflow: hidden;
+  background: #1A1A1A;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .values-inner {
   display: flex;
-  height: 100%;
+  height: 90%;
   width: 400vw;
-  transition: transform 0.1s linear;
+  will-change: transform;
+  flex: 1;
+  align-items: center;
 }
 
 .values-panel {
+  top: 3%;
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  background: white;
+  background: #1A1A1A;
 }
 
 .values-panel__bg-text {
   position: absolute;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 15vw;
+  font-size: 17vw;
   font-weight: 300;
-  color: var(--color-off-white);
-  opacity: 1;
+  color: rgba(255, 255, 255, 0.022);
   pointer-events: none;
   z-index: 0;
   line-height: 1;
+  user-select: none;
 }
 
 .values-panel__content {
   position: relative;
   z-index: 1;
   text-align: center;
-  max-width: 480px;
-  padding: 0 24px;
+  max-width: 1200px;
+  padding: clamp(200px, 5vw, 48px) clamp(290px, 4vw, 40px);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 16px;
 }
 
 .values-panel__number {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 48px;
-  color: var(--color-teal);
+  color: #008080;
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   font-weight: 300;
+}
+
+.values-panel__line {
+  width: 60px;
+  height: 2px;
+  background: #008080;
+  margin: 0 auto 20px;
 }
 
 .values-panel__title {
   font-family: var(--font-serif);
   font-size: 36px;
   font-weight: 400;
-  color: var(--color-black);
+  color: #FFFFFF;
   margin-bottom: 16px;
   line-height: 1.2;
 }
 
 .values-panel__description {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
-  color: var(--color-grey);
-  line-height: 1.8;
-  max-width: 480px;
+  color: rgb(255, 255, 255);
+  line-height: 1.9;
 }
 
-/* Mobile: disable horizontal scroll, stack vertically */
+
+/* Mobile: disable horizontal scroll, stack vertically
 @media (max-width: 767px) {
   .values-scroll-container {
     height: auto;
@@ -3656,7 +3695,7 @@ button, a.btn, input, textarea, select {
   .values-panel__content {
     max-width: 100%;
   }
-}
+} */
 
 /* ──────────────────────────────────────────────────────── */
 /* SECTION 2: MEET THE TEAM - Cards (Desktop) / Carousel (Mobile) */

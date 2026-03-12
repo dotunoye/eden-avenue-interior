@@ -391,36 +391,43 @@ function initValuesScroll() {
   const container = document.querySelector('.values-scroll-container');
   if (!container) return;
 
-  // Check for reduced motion preference
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
-  const sticky = document.querySelector('.values-sticky');
   const inner = document.querySelector('.values-inner');
-
-  if (!sticky || !inner) return;
-
-  // Only on desktop (768px+)
-  if (window.innerWidth < 768) return;
+  if (!inner) return;
 
   let ticking = false;
 
   const updateScroll = () => {
-    const containerRect = container.getBoundingClientRect();
-    const scrollProgress = Math.max(0, Math.min(1, 1 - (containerRect.top / window.innerHeight)));
-    const translateX = scrollProgress * -300; // Move 300vw over 500vh
-    inner.style.transform = `translateX(${translateX}vw)`;
+    const rect = container.getBoundingClientRect();
+    const containerHeight = container.offsetHeight;
+    const viewportHeight = window.innerHeight;
+
+    // How far scrolled into container
+    const scrolled = -rect.top / (containerHeight - viewportHeight);
+    const progress = Math.max(0, Math.min(1, scrolled));
+
+    inner.style.transform = `translateX(${progress * -300}vw)`;
     ticking = false;
   };
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      window.requestAnimationFrame(updateScroll);
+      requestAnimationFrame(updateScroll);
       ticking = true;
     }
   }, { passive: true });
 
-  updateScroll(); // Initial call
+  // iOS Safari needs this to fire scroll events inside sticky
+  document.addEventListener('touchmove', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateScroll();
 }
 
 /* ========== SECTION 2: TEAM - Mobile Carousel ========== */
