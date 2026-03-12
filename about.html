@@ -115,56 +115,51 @@
       </section>
     </div>
 
-    <!-- ══ MISSION & VALUES ══ -->
-    <div class="section-wrap" style="max-width: 1200px; margin: 0 auto; padding: 0 24px; border-top: 1px solid #0080808c;">
-      <section class="about-values">
-        <div class="about-values__inner">
-          <div class="about-values__header anim anim--fade-up">
-            <span class="section-eyebrow">What Drives Us</span>
-            <h2>Our <em>Values</em></h2>
-            <p>Every decision we make, every space we design, every client we serve — guided by these four principles.</p>
+    <!-- ══ VALUES - HORIZONTAL SCROLL (Desktop) / VERTICAL STACK (Mobile) ══ -->
+    <div class="values-scroll-container">
+      <div class="values-sticky">
+        <div class="values-inner">
+          <!-- Value 1: Detail Obsessed -->
+          <div class="values-panel">
+            <div class="values-panel__bg-text">Detail</div>
+            <div class="values-panel__content">
+              <div class="values-panel__number">01</div>
+              <h2 class="values-panel__title">Detail Obsessed</h2>
+              <p class="values-panel__description">We sweat the small stuff so you don't have to. Every finish, every fixture, every fabric is chosen with intention.</p>
+            </div>
           </div>
-          <div class="about-values__grid">
-            <div class="value-card anim anim--fade-up">
-              <div class="value-card__icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#008080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 8v4l3 3"/>
-                </svg>
-              </div>
-              <h3>Detail Obsessed</h3>
-              <p>We sweat the small stuff so you don't have to. Every finish, every fixture, every fabric is chosen with intention.</p>
+          
+          <!-- Value 2: Client First -->
+          <div class="values-panel">
+            <div class="values-panel__bg-text">Client</div>
+            <div class="values-panel__content">
+              <div class="values-panel__number">02</div>
+              <h2 class="values-panel__title">Client First</h2>
+              <p class="values-panel__description">Your vision is the brief. We listen deeply, ask the right questions, and never impose our taste over yours.</p>
             </div>
-            <div class="value-card anim anim--fade-up">
-              <div class="value-card__icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#008080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-              </div>
-              <h3>Client First</h3>
-              <p>Your vision is the brief. We listen deeply, ask the right questions, and never impose our taste over yours.</p>
+          </div>
+          
+          <!-- Value 3: Timeless Quality -->
+          <div class="values-panel">
+            <div class="values-panel__bg-text">Timeless</div>
+            <div class="values-panel__content">
+              <div class="values-panel__number">03</div>
+              <h2 class="values-panel__title">Timeless Quality</h2>
+              <p class="values-panel__description">We design for longevity. Spaces that are still beautiful, still functional, still loved — years after handover.</p>
             </div>
-            <div class="value-card anim anim--fade-up">
-              <div class="value-card__icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#008080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              </div>
-              <h3>Timeless Quality</h3>
-              <p>We design for longevity. Spaces that are still beautiful, still functional, still loved — years after handover.</p>
-            </div>
-            <div class="value-card anim anim--fade-up">
-              <div class="value-card__icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#008080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-              </div>
-              <h3>Honest Partnership</h3>
-              <p>Transparent pricing, realistic timelines, clear communication. No surprises — just a smooth, trustworthy process from start to finish.</p>
+          </div>
+          
+          <!-- Value 4: Honest Partnership -->
+          <div class="values-panel">
+            <div class="values-panel__bg-text">Honest</div>
+            <div class="values-panel__content">
+              <div class="values-panel__number">04</div>
+              <h2 class="values-panel__title">Honest Partnership</h2>
+              <p class="values-panel__description">Transparent pricing, realistic timelines, clear communication. No surprises — just a smooth, trustworthy process from start to finish.</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
 
     <!-- ══ MEET THE TEAM ══ -->
@@ -176,40 +171,40 @@
             <h2>Meet the <em>Team</em></h2>
             <p>A passionate group of designers, decorators and project managers — united by a love for beautiful spaces.</p>
           </div>
-          <div class="about-team__grid">
-            <div class="team-card anim anim--fade-up">
+          <div class="team-carousel" id="team-carousel">
+            <div class="team-card">
               <div class="team-card__image">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"
                      alt="Eden Avenue lead designer"
-                     loading="lazy" width="600" height="700">
+                     loading="lazy" width="600" height="600">
               </div>
               <div class="team-card__info">
-                <h3>Creative Director</h3>
                 <span class="team-card__role">Lead Designer</span>
+                <h3 class="team-card__name">Amara Okonkwo</h3>
                 <p>With over 5 years of experience transforming spaces across Lagos, she brings vision, precision and warmth to every project.</p>
               </div>
             </div>
-            <div class="team-card anim anim--fade-up">
+            <div class="team-card">
               <div class="team-card__image">
                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80"
                      alt="Eden Avenue interior designer"
-                     loading="lazy" width="600" height="700">
+                     loading="lazy" width="600" height="600">
               </div>
               <div class="team-card__info">
-                <h3>Interior Designer</h3>
                 <span class="team-card__role">Residential Specialist</span>
+                <h3 class="team-card__name">Tunde Adeyemi</h3>
                 <p>Passionate about creating homes that feel personal and timeless. Specialises in residential and hospitality projects.</p>
               </div>
             </div>
-            <div class="team-card anim anim--fade-up">
+            <div class="team-card">
               <div class="team-card__image">
                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
                      alt="Eden Avenue project manager"
-                     loading="lazy" width="600" height="700">
+                     loading="lazy" width="600" height="600">
               </div>
               <div class="team-card__info">
-                <h3>Project Manager</h3>
                 <span class="team-card__role">Operations Lead</span>
+                <h3 class="team-card__name">Chioma Ukairo</h3>
                 <p>The engine behind every seamless delivery. Ensures every project runs on time, on budget and above expectation.</p>
               </div>
             </div>
@@ -218,75 +213,106 @@
       </section>
     </div>
 
-    <!-- ══ PROCESS — SIMPLIFIED ══ -->
+    <!-- ══ PROCESS — SVG ROADMAP ══ -->
     <div class="section-wrap" style="background: #F5F5F5;">
-      <section class="about-process">
+      <section class="about-process" id="process-roadmap">
         <div class="about-process__inner">
           <div class="about-process__header anim anim--fade-up">
             <span class="section-eyebrow">How We Work</span>
             <h2>From brief to <em>beautiful</em></h2>
           </div>
-          <div class="about-process__steps">
-            <div class="process-step anim anim--fade-up">
-              <span class="process-step__number">01</span>
-              <h3 class="process-step__title">Site Inspection</h3>
-              <p class="process-step__desc">We visit, assess and listen. Understanding your space and your vision before anything else.</p>
-            </div>
-            <div class="process-step__divider"></div>
-            <div class="process-step anim anim--fade-up">
-              <span class="process-step__number">02</span>
-              <h3 class="process-step__title">Mood Board & Design</h3>
-              <p class="process-step__desc">Concepts, sketches and material selections — all tailored to your taste and budget.</p>
-            </div>
-            <div class="process-step__divider"></div>
-            <div class="process-step anim anim--fade-up">
-              <span class="process-step__number">03</span>
-              <h3 class="process-step__title">Full Project Costing</h3>
-              <p class="process-step__desc">Complete technical documentation and 3D renders so you see exactly what you're getting.</p>
-            </div>
-            <div class="process-step__divider"></div>
-            <div class="process-step anim anim--fade-up">
-              <span class="process-step__number">04</span>
-              <h3 class="process-step__title">Project Execution</h3>
-              <p class="process-step__desc">We build, install and deliver — handing over only when everything meets our standard and yours.</p>
+          
+          <div class="roadmap-container">
+            <svg class="roadmap-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+              <path class="roadmap-path" d="M 100 150 Q 300 100, 400 300 Q 500 400, 700 350 Q 900 300, 900 450" 
+                    stroke="#008080" stroke-width="2" fill="none"/>
+            </svg>
+            
+            <!-- Stops and labels -->
+            <div class="roadmap-stops">
+              <!-- Stop 1: Site Inspection -->
+              <div class="roadmap-stop" data-index="0" style="--stop-x: 100px; --stop-y: 150px;">
+                <div class="roadmap-stop__circle"></div>
+                <div class="roadmap-label roadmap-label--top">
+                  <div class="roadmap-label__number">01</div>
+                  <h3>Site Inspection</h3>
+                  <p>We visit, assess and listen. Understanding your space and your vision before anything else.</p>
+                </div>
+              </div>
+              
+              <!-- Stop 2: Mood Board & Design -->
+              <div class="roadmap-stop" data-index="1" style="--stop-x: 400px; --stop-y: 300px;">
+                <div class="roadmap-stop__circle"></div>
+                <div class="roadmap-label roadmap-label--bottom">
+                  <div class="roadmap-label__number">02</div>
+                  <h3>Mood Board & Design</h3>
+                  <p>Concepts, sketches and material selections — all tailored to your taste and budget.</p>
+                </div>
+              </div>
+              
+              <!-- Stop 3: Full Project Costing -->
+              <div class="roadmap-stop" data-index="2" style="--stop-x: 700px; --stop-y: 350px;">
+                <div class="roadmap-stop__circle"></div>
+                <div class="roadmap-label roadmap-label--top">
+                  <div class="roadmap-label__number">03</div>
+                  <h3>Full Project Costing</h3>
+                  <p>Complete technical documentation and 3D renders so you see exactly what you're getting.</p>
+                </div>
+              </div>
+              
+              <!-- Stop 4: Project Execution -->
+              <div class="roadmap-stop" data-index="3" style="--stop-x: 900px; --stop-y: 450px;">
+                <div class="roadmap-stop__circle"></div>
+                <div class="roadmap-label roadmap-label--bottom">
+                  <div class="roadmap-label__number">04</div>
+                  <h3>Project Execution</h3>
+                  <p>We build, install and deliver — handing over only when everything meets our standard.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- ══ AWARDS ══ -->
-    <div class="section-wrap">
-      <section class="about-awards">
-        <div class="about-awards__inner">
-          <div class="about-awards__header anim anim--fade-up">
-            <span class="section-eyebrow">Recognition</span>
-            <h2>Awards & <em>Recognition</em></h2>
+    <!-- ══ AWARDS & RECOGNITION — Timeline ══ -->
+    <div class="awards-section" style="background: #1A1A1A;">
+      <div class="section-wrap">
+        <section class="about-awards">
+          <div class="about-awards__inner">
+            <div class="about-awards__header anim anim--fade-up">
+              <span class="section-eyebrow" style="color: rgba(255,255,255,0.6);">Recognition</span>
+              <h2 style="color: white;">Awards & <em style="color: #008080;">Recognition</em></h2>
+            </div>
+            
+            <div class="awards-timeline" id="awards-timeline">
+              <div class="award-milestone">
+                <div class="award-year" data-start="2015" data-end="2019">2019</div>
+                <h3 class="award-title">Founded in Lagos</h3>
+                <p class="award-desc">Established with a vision to redefine premium interior design in Nigeria.</p>
+              </div>
+              
+              <div class="award-milestone">
+                <div class="award-year" data-start="2015" data-end="2021">2021</div>
+                <h3 class="award-title">50+ Projects Milestone</h3>
+                <p class="award-desc">Completed over 50 residential and commercial projects across Lagos.</p>
+              </div>
+              
+              <div class="award-milestone">
+                <div class="award-year" data-start="2015" data-end="2023">2023</div>
+                <h3 class="award-title">4 Divisions Launched</h3>
+                <p class="award-desc">Expanded into Homes, Drapes and Flooring — becoming a full service interior brand.</p>
+              </div>
+              
+              <div class="award-milestone">
+                <div class="award-year" data-start="2015" data-end="2024">2024</div>
+                <h3 class="award-title">Premium Brand Status</h3>
+                <p class="award-desc">Recognised as one of Lagos' leading premium interior design studios.</p>
+              </div>
+            </div>
           </div>
-          <div class="about-awards__grid">
-            <div class="award-item anim anim--fade-up">
-              <span class="award-item__year">2019</span>
-              <h3>Founded in Lagos</h3>
-              <p>Established with a vision to redefine premium interior design in Nigeria.</p>
-            </div>
-            <div class="award-item anim anim--fade-up">
-              <span class="award-item__year">2021</span>
-              <h3>50+ Projects Milestone</h3>
-              <p>Completed over 50 residential and commercial projects across Lagos.</p>
-            </div>
-            <div class="award-item anim anim--fade-up">
-              <span class="award-item__year">2023</span>
-              <h3>4 Divisions Launched</h3>
-              <p>Expanded into Homes, Drapes and Flooring — becoming a full service interior brand.</p>
-            </div>
-            <div class="award-item anim anim--fade-up">
-              <span class="award-item__year">2024</span>
-              <h3>Premium Brand Status</h3>
-              <p>Recognised as one of Lagos' leading premium interior design studios.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
 
     <!-- ══ TESTIMONIALS ══ -->
@@ -297,28 +323,54 @@
             <span class="section-eyebrow">Client Stories</span>
             <h2>What Our Clients <em>Say</em></h2>
           </div>
-          <div class="about-testimonials__grid">
-            <div class="testimonial-card anim anim--fade-up">
-              <p class="testimonial-card__quote">"Eden Avenue transformed our home into something beyond what we imagined. Every detail was perfect — from the furniture to the finishing touches. Truly exceptional work."</p>
-              <div class="testimonial-card__author">
-                <span class="testimonial-card__name">Mrs. Adeyemi</span>
-                <span class="testimonial-card__role">Homeowner, Victoria Island</span>
+          
+          <div class="testimonials-container" id="testimonials-slider">
+            <div class="testimonial-quote">
+              <div class="testimonial-quote__mark">"</div>
+              <p class="testimonial-quote__text">Eden Avenue transformed our home into something beyond what we imagined. Every detail was perfect — from the furniture to the finishing touches. Truly exceptional work.</p>
+              <div class="testimonial-quote__divider"></div>
+              <div class="testimonial-quote__author">
+                <p class="testimonial-quote__name">Mrs. Adeyemi</p>
+                <p class="testimonial-quote__location">Homeowner, Victoria Island</p>
               </div>
             </div>
-            <div class="testimonial-card anim anim--fade-up">
-              <p class="testimonial-card__quote">"Professional, creative and always within budget. They understood our vision from day one and delivered a commercial space that wows everyone who walks in."</p>
-              <div class="testimonial-card__author">
-                <span class="testimonial-card__name">Mr. Okafor</span>
-                <span class="testimonial-card__role">Business Owner, Lekki</span>
+            
+            <div class="testimonial-quote">
+              <div class="testimonial-quote__mark">"</div>
+              <p class="testimonial-quote__text">Professional, creative and always within budget. They understood our vision from day one and delivered a commercial space that wows everyone who walks in.</p>
+              <div class="testimonial-quote__divider"></div>
+              <div class="testimonial-quote__author">
+                <p class="testimonial-quote__name">Mr. Okafor</p>
+                <p class="testimonial-quote__location">Business Owner, Lekki</p>
               </div>
             </div>
-            <div class="testimonial-card anim anim--fade-up">
-              <p class="testimonial-card__quote">"The drapes they recommended completely changed the feel of our living room. The quality is outstanding and the installation was seamless. Highly recommend."</p>
-              <div class="testimonial-card__author">
-                <span class="testimonial-card__name">Mrs. Babatunde</span>
-                <span class="testimonial-card__role">Homeowner, Ikoyi</span>
+            
+            <div class="testimonial-quote">
+              <div class="testimonial-quote__mark">"</div>
+              <p class="testimonial-quote__text">The drapes they recommended completely changed the feel of our living room. The quality is outstanding and the installation was seamless. Highly recommend.</p>
+              <div class="testimonial-quote__divider"></div>
+              <div class="testimonial-quote__author">
+                <p class="testimonial-quote__name">Mrs. Babatunde</p>
+                <p class="testimonial-quote__location">Homeowner, Ikoyi</p>
               </div>
             </div>
+          </div>
+          
+          <!-- Mobile navigation controls (hidden on desktop) -->
+          <div class="testimonials-controls">
+            <button class="testimonials-nav-btn testimonials-nav-btn--prev" id="testimonials-prev" aria-label="Previous testimonial">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div class="testimonials-counter">
+              <span id="testimonials-current">01</span> / <span id="testimonials-total">03</span>
+            </div>
+            <button class="testimonials-nav-btn testimonials-nav-btn--next" id="testimonials-next" aria-label="Next testimonial">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
       </section>

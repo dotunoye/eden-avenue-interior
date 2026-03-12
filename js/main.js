@@ -42,7 +42,6 @@ function renderPortfolioCards(items, containerId) {
         <h3 class="card-title">${item.name}</h3>
         <p class="card-location">${item.location}</p>
         <p class="card-desc">${item.description}</p>
-        ${item.priceRange ? `<p class="card-price">${item.priceRange}</p>` : ''}
         <a href="${generateWhatsAppLink(item.name)}" class="btn-teal btn-pill card-cta" aria-label="Book consultation for ${item.name}">Book a Consultation</a>
       </div>
     </div>
@@ -98,7 +97,7 @@ function renderProductCards(items, containerId) {
 function generateWhatsAppLink(projectName) {
   const message = `I saw the ${projectName} on your website and I'd like to book a consultation for something similar.`;
   const encodedMessage = encodeURIComponent(message);
-  return `https://wa.me/2348000000000?text=${encodedMessage}`;
+  return `https://wa.me/2347047999787?text=${encodedMessage}`;
 }
 
 /* ========== MODAL - Click/Keyboard Activated ========== */
@@ -384,6 +383,255 @@ const targets = [
   document.querySelectorAll('.anim').forEach(el => observer.observe(el));
 }
 
+/* ========== SECTION 1: VALUES - Horizontal Scroll ========== */
+/**
+ * Initialize VALUES section with horizontal scroll on desktop
+ */
+function initValuesScroll() {
+  const container = document.querySelector('.values-scroll-container');
+  if (!container) return;
+
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  const sticky = document.querySelector('.values-sticky');
+  const inner = document.querySelector('.values-inner');
+
+  if (!sticky || !inner) return;
+
+  // Only on desktop (768px+)
+  if (window.innerWidth < 768) return;
+
+  let ticking = false;
+
+  const updateScroll = () => {
+    const containerRect = container.getBoundingClientRect();
+    const scrollProgress = Math.max(0, Math.min(1, 1 - (containerRect.top / window.innerHeight)));
+    const translateX = scrollProgress * -300; // Move 300vw over 500vh
+    inner.style.transform = `translateX(${translateX}vw)`;
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateScroll(); // Initial call
+}
+
+/* ========== SECTION 2: TEAM - Mobile Carousel ========== */
+/**
+ * Initialize TEAM carousel for mobile auto-scroll
+ */
+function initTeamCarousel() {
+  const carousel = document.getElementById('team-carousel');
+  if (!carousel || window.innerWidth >= 768) return;
+
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let currentIndex = 0;
+  const cards = carousel.querySelectorAll('.team-card');
+  const cardWidth = carousel.offsetWidth;
+
+  const autoScroll = () => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    carousel.scrollTo({
+      left: currentIndex * cardWidth,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    });
+  };
+
+  // Auto-advance every 3000ms
+  if (!prefersReducedMotion) {
+    setInterval(autoScroll, 3000);
+  }
+}
+
+/* ========== SECTION 3: HOW WE WORK - SVG Roadmap ========== */
+/**
+ * Initialize HOW WE WORK - SVG path animation and stop scaling
+ */
+function initRoadmap() {
+  const section = document.getElementById('process-roadmap');
+  if (!section) return;
+
+  const svg = section.querySelector('.roadmap-svg');
+  const path = section.querySelector('.roadmap-path');
+  const stops = section.querySelectorAll('.roadmap-stop');
+
+  if (!svg || !path) return;
+
+  // Check for reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Get total path length for dash animation
+  const pathLength = path.getTotalLength();
+  path.style.strokeDasharray = pathLength;
+  path.style.strokeDashoffset = pathLength;
+
+  // Intersection Observer for path animation
+  const pathObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!prefersReducedMotion) {
+          path.style.strokeDashoffset = '0';
+        } else {
+          path.style.strokeDasharray = 'none';
+        }
+        // Disconnect after first trigger
+        pathObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+
+  pathObserver.observe(svg);
+
+  // Animate stops when they enter viewport
+  const stopObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const circle = entry.target.querySelector('.roadmap-stop__circle');
+        if (circle && !prefersReducedMotion) {
+          circle.style.animation = 'labelScaleIn 0.4s ease-out forwards';
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  stops.forEach(stop => stopObserver.observe(stop));
+}
+
+/* ========== SECTION 4: AWARDS - Counting Animation ========== */
+/**
+ * Initialize AWARDS - Animate year counting and mobile carousel
+ */
+function initAwardsCarousel() {
+  const timeline = document.getElementById('awards-timeline');
+  if (!timeline) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const milestones = timeline.querySelectorAll('.award-milestone');
+
+  // Animate year numbers counting up
+  const animateCounter = (start, end, element, duration) => {
+    if (prefersReducedMotion) {
+      element.textContent = end;
+      return;
+    }
+
+    let current = start;
+    const range = end - start;
+    const increment = range / (duration / 16); // 60fps
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= end) {
+        element.textContent = end;
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current);
+      }
+    }, 16);
+  };
+
+  // Intersection Observer for counting animation
+  const yearObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const yearEl = entry.target.querySelector('.award-year');
+        if (yearEl && !yearEl.dataset.animated) {
+          const startYear = parseInt(yearEl.dataset.start) || 2015;
+          const endYear = parseInt(yearEl.dataset.end);
+          animateCounter(startYear, endYear, yearEl, 1500);
+          yearEl.dataset.animated = 'true';
+        }
+        // Keep observing for mobile carousel view
+      }
+    });
+  }, { threshold: 0.5 });
+
+  milestones.forEach(milestone => yearObserver.observe(milestone));
+
+  // Mobile carousel
+  if (window.innerWidth < 768) {
+    let currentIndex = 0;
+    
+    const autoScroll = () => {
+      currentIndex = (currentIndex + 1) % milestones.length;
+      timeline.scrollTo({
+        left: currentIndex * timeline.offsetWidth,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+    };
+
+    if (!prefersReducedMotion) {
+      setInterval(autoScroll, 2500);
+    }
+  }
+}
+
+/* ========== SECTION 5: TESTIMONIALS - Slider ========== */
+/**
+ * Initialize TESTIMONIALS - Quote carousel with navigation
+ */
+function initTestimonialSlider() {
+  const container = document.getElementById('testimonials-slider');
+  const prevBtn = document.getElementById('testimonials-prev');
+  const nextBtn = document.getElementById('testimonials-next');
+  const currentSpan = document.getElementById('testimonials-current');
+  const totalSpan = document.getElementById('testimonials-total');
+
+  if (!container) return;
+
+  const quotes = container.querySelectorAll('.testimonial-quote');
+  let currentIndex = 0;
+
+  // Show quote at index
+  const showQuote = (index) => {
+    quotes.forEach(quote => quote.classList.remove('active'));
+    quotes[index].classList.add('active');
+    
+    if (currentSpan) {
+      currentSpan.textContent = String(index + 1).padStart(2, '0');
+    }
+  };
+
+  // Navigation handlers
+  const goNext = () => {
+    currentIndex = (currentIndex + 1) % quotes.length;
+    showQuote(currentIndex);
+  };
+
+  const goPrev = () => {
+    currentIndex = (currentIndex - 1 + quotes.length) % quotes.length;
+    showQuote(currentIndex);
+  };
+
+  // Attach event listeners
+  if (nextBtn) nextBtn.addEventListener('click', goNext);
+  if (prevBtn) prevBtn.addEventListener('click', goPrev);
+
+  // Set total count
+  if (totalSpan) totalSpan.textContent = quotes.length;
+
+  // Show first quote
+  showQuote(0);
+
+  // Only on mobile
+  if (window.innerWidth < 1024) {
+    // Optional: keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!container.parentElement.offsetParent) return; // Check if visible
+      if (e.key === 'ArrowRight') goNext();
+      if (e.key === 'ArrowLeft') goPrev();
+    });
+  }
+}
+
 /* ========== PAGE INITIALIZATION ========== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -412,6 +660,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initTypewriter();
   initScrollAnimations();
+  
+  // Initialize new about page sections
+  initValuesScroll();
+  initTeamCarousel();
+  initRoadmap();
+  initAwardsCarousel();
+  initTestimonialSlider();
 });
 
 /* ========== ERROR HANDLING ========== */
@@ -492,4 +747,15 @@ if (document.getElementById('grid-interiors')) {
   renderPortfolioGrid('grid-interiors', window.siteData.interiors);
 }
 
+const scrollIndicator = document.querySelector('.hero-scroll-indicator');
+if (scrollIndicator) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      scrollIndicator.style.opacity = '0';
+      scrollIndicator.style.pointerEvents = 'none';
+    } else {
+      scrollIndicator.style.opacity = '1';
+    }
+  }, { passive: true });
+}
 /* End of main.js */
