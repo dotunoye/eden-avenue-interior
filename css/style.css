@@ -105,10 +105,8 @@ body {
 
 @media (max-width: 767px) {
   body {
-    overflow-x: hidden;
   }
   html{
-    overflow-x: hidden;
   }
 }
 
@@ -3622,8 +3620,13 @@ button, a.btn, input, textarea, select {
   position: relative;
   z-index: 1;
   text-align: center;
+  align-content: center;
+  justify-content: center;
+  justify-self: center;
+  max-height: 900px;
   max-width: 1200px;
-  padding: clamp(24px, 10vw, 2900px) clamp(20px, 15vw, 250px);
+  width: min(480px, calc(100vw - 0px));
+  padding: clamp(24px, 5vw, 56px) clamp(20px, 4vw, 48px);
   border: 1px solid rgb(255, 255, 255);
   border-radius: 16px;
 }

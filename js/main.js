@@ -389,13 +389,21 @@ const targets = [
  */
 function initValuesScroll() {
   const container = document.querySelector('.values-scroll-container');
-  if (!container) return;
+  if (!container) {
+    console.warn('Values scroll container not found');
+    return;
+  }
+  console.log('Values scroll initialized:', { container });
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
   const inner = document.querySelector('.values-inner');
-  if (!inner) return;
+  if (!inner) {
+    console.warn('Values inner not found');
+    return;
+  }
+  console.log('Values inner found:', { inner });
 
   let ticking = false;
 
@@ -408,6 +416,7 @@ function initValuesScroll() {
     const scrolled = -rect.top / (containerHeight - viewportHeight);
     const progress = Math.max(0, Math.min(1, scrolled));
 
+    console.log('Scroll update:', { rectTop: rect.top, containerHeight, viewportHeight, scrolled: scrolled.toFixed(3), progress: progress.toFixed(3) });
     inner.style.transform = `translateX(${progress * -300}vw)`;
     ticking = false;
   };
