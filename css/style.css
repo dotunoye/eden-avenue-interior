@@ -86,7 +86,14 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
 }
 
 html {
@@ -449,7 +456,7 @@ nav.pill-nav .nav-links a.active::after {
 .hero-video__bg {
   position: fixed;
   inset: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   object-fit: cover;
   z-index: 0;
@@ -460,6 +467,7 @@ nav.pill-nav .nav-links a.active::after {
   inset: 0;
   background: rgba(0, 0, 0, 0.249);
   z-index: 1;
+  width: 100vw;
 }
 
 .hero-video__content {
@@ -1275,6 +1283,8 @@ section.hero-off-white {
   .bento-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+    height: auto;
+    max-height: 800px;
   }
 
   .bento-large {
@@ -1934,6 +1944,7 @@ textarea {
 }
 
 /* PROCESS SECTION */
+
 .process {
   background: #F5F5F5;
   padding: 60px 24px;
@@ -2222,6 +2233,7 @@ textarea {
     opacity: 1;
     margin-bottom: 0;
     border-radius: 0;
+    padding: 0px 24px;
   }
 
   .process__image-wrap img {
@@ -3736,7 +3748,7 @@ button, a.btn, input, textarea, select {
   height: 100%;
   object-fit: cover;
   object-position: top;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/14;
 }
 
 .team-card__info {
@@ -3786,10 +3798,11 @@ button, a.btn, input, textarea, select {
   }
 
   .team-card {
-    flex: 0 0 100%;
+    flex: 0 0 70%;
     grid-template-columns: 1fr;
     scroll-snap-align: center;
-    gap: 0;
+    margin: 16px;
+    max-height: 1000px;
   }
 
   .team-card:hover {
@@ -3799,18 +3812,17 @@ button, a.btn, input, textarea, select {
 
   .team-card__image {
     width: 100%;
-    height: 250px
+    height: 300px
   }
 
   .team-card__info {
     padding: 16px;
   }
 }
-
 /* Tablet: 2 columns */
 @media (max-width: 1023px) and (min-width: 768px) {
   .team-carousel {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

@@ -224,25 +224,21 @@ function initNavigation() {
 
   // Mobile menu toggle
   if (hamburger) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
-    document.body.style.overflow = 'hidden';
-  }
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+}
 
   // Close mobile menu on link click
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (hamburger) {
-        hamburger.classList.remove('active');
-      }
-      if (mobileMenu) {
-        mobileMenu.classList.remove('active');
-      }
-    });
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger?.classList.remove('active');
+    mobileMenu?.classList.remove('active');
     document.body.style.overflow = '';
   });
+});
 
   // Set active nav link based on current page
   setActiveNavLink();
@@ -437,6 +433,39 @@ function initValuesScroll() {
   }, { passive: true });
 
   updateScroll();
+}
+
+function initProcessScroll() {
+  const phases = document.querySelectorAll('.process__phase');
+  const imageWraps = document.querySelectorAll('.process__image-wrap');
+  
+  if (!phases.length) return;
+
+  // Activate first phase by default
+  phases[0].classList.add('active');
+  imageWraps[0].classList.add('active');
+
+  // Observe each image wrap — when it enters viewport, activate matching phase
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const phase = entry.target.dataset.phase;
+        
+        // Deactivate all
+        phases.forEach(p => p.classList.remove('active'));
+        imageWraps.forEach(img => img.classList.remove('active'));
+        
+        // Activate matching ones
+        const matchingPhase = document.querySelector(`.process__phase[data-phase="${phase}"]`);
+        if (matchingPhase) matchingPhase.classList.add('active');
+        entry.target.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+
+  imageWraps.forEach(wrap => observer.observe(wrap));
 }
 
 /* ========== SECTION 2: TEAM - Mobile Carousel ========== */
@@ -676,6 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initTypewriter();
   initScrollAnimations();
+  initProcessScroll();
   
   // Initialize new about page sections
   initValuesScroll();
