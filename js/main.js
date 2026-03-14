@@ -270,7 +270,7 @@ function initTypewriter() {
   const typedEl = document.querySelector('.hero__typed');
   if (!typedEl) return;
 
-  const words = ['Memories.', 'Experiences.', 'Homes.'];
+  const words = ['Mems.', 'Expe.', 'es.'];
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;

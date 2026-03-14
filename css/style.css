@@ -171,12 +171,6 @@ p.subtitle {
   margin-bottom: var(--spacing-lg);
 }
 
-@media (max-width: 767px) {
-  p.subtitle {
-    letter-spacing: 1.5px;
-  }
-}
-
 a {
   color: var(--color-teal);
   text-decoration: none;
@@ -378,80 +372,9 @@ nav.pill-nav .nav-links a.active::after {
 
 /* 6. HERO SECTION */
 
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  padding-top: 120px;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  background-attachment: fixed;
-}
-
-.hero {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Ken Burns zoom animation */
-@keyframes kenBurns {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 1;
-  animation: kenBurns 20s ease-out forwards;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: var(--color-white);
-  flex-direction: column;
-  justify-content: center;
-
-}
-
-.hero h1 {
-  color: var(--color-white);
-  font-size: 70px;
-}
-
-.hero .subtitle {
-  color: var(--color-white);
-  font-size: 20px;
-  margin: 0 auto;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: var(--spacing-md);
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: var(--spacing-xl);
-}
-
 .hero-video {
   position: relative;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -460,20 +383,23 @@ nav.pill-nav .nav-links a.active::after {
 }
 
 .hero-video__bg {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
   z-index: 0;
 }
 
 .hero-video__overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.249);
-  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
 }
 
 .hero-video__content {
@@ -482,43 +408,98 @@ nav.pill-nav .nav-links a.active::after {
   text-align: center;
   color: #FFFFFF;
   padding: 0 24px;
+  width: 100%;
+  max-width: 900px;
 }
 
-.hero-tagline {
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.hero__static {
+  font-family: var(--font-sans);
+  font-size: clamp(11px, 2vw, 14px);
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* .hero__typewriter {
   font-family: var(--font-serif);
-  font-size: clamp(42px, 7vw, 90px);
+  font-size: clamp(40px, 8vw, 100px);
   font-style: italic;
   font-weight: 300;
+  color: #FFFFFF;
   line-height: 1.1;
-  margin-bottom: 16px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+} */
+
+.hero__typed {
+  display: inline;
 }
 
-.hero-sub {
-  font-family: var(--font-sans);
-  font-size: 13px;
+.hero__cursor {
+  display: inline-block;
   font-weight: 300;
-  letter-spacing: 5px;
+  color: var(--color-teal);
+  animation: cursor-blink 0.8s step-end infinite;
+  margin-left: 4px;
+  font-style: normal;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.hero-scroll-indicator__text {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
 }
 
 @media (max-width: 767px) {
-  .hero-sub {
+  .hero__static {
     letter-spacing: 2px;
+    font-size: 10px;
+  }
+
+  .hero__typewriter {
+    font-size: clamp(36px, 10vw, 60px);
   }
 }
-
-/* Mobile: Switch hero video from fixed to absolute positioning */
-@media (max-width: 767px) {
-  .hero-video__bg {
-    position: absolute;
-  }
-
-  .hero-video__overlay {
-    position: absolute;
-  }
-}
-
 /* 7. BUTTONS */
 
 button, .btn {
@@ -838,12 +819,6 @@ section.hero-off-white {
   color: #8C92AC;
 }
 
-@media (max-width: 767px) {
-  .stat-label {
-    letter-spacing: 1.5px;
-  }
-}
-
 /* Responsive stats strip on mobile */
 @media (max-width: 767px) {
   .stats-strip {
@@ -918,12 +893,6 @@ section.hero-off-white {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #1A1A1A;
-}
-
-@media (max-width: 767px) {
-  .backstory__image-tag span {
-    letter-spacing: 1.5px;
-  }
 }
 
 .backstory__image-tag span:last-child {
@@ -1050,12 +1019,6 @@ section.hero-off-white {
   padding: 6px 14px;
   border-radius: 50px;
   margin-bottom: 24px;
-}
-
-@media (max-width: 767px) {
-  .wwd__tag {
-    letter-spacing: 1.5px;
-  }
 }
 
 .wwd__text h3 {
@@ -1276,12 +1239,6 @@ section.hero-off-white {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.8);
-}
-
-@media (max-width: 767px) {
-  .bento-label {
-    letter-spacing: 1.5px;
-  }
 }
 
 /* Hover description */
@@ -1631,12 +1588,6 @@ footer {
   text-transform: uppercase;
   color: #FFFFFF;
   margin-bottom: 24px;
-}
-
-@media (max-width: 767px) {
-  .footer-section h4 {
-    letter-spacing: 1.5px;
-  }
 }
 
 /* Quick links */
@@ -2002,6 +1953,7 @@ textarea {
 .process {
   background: #F5F5F5;
   padding: 60px 24px;
+  overflow: hidden;
 }
 
 .process__inner {
@@ -2403,7 +2355,6 @@ textarea {
 
   button, .btn {
     width: 100%;
-    max-width: 300px;
   }
 }
 
@@ -2474,7 +2425,6 @@ textarea:focus {
 button, a.btn, input, textarea, select {
   min-height: 44px;
   min-width: 44px;
-  max-width: 300px;
 }
 
 /* 23. UTILITY CLASSES */
@@ -2548,17 +2498,11 @@ button, a.btn, input, textarea, select {
   display: block;
 }
 
-@media (max-width: 767px) {
-  .hero__static {
-    letter-spacing: 2px;
-  }
-}
-
 .hero__typewriter {
   font-family: var(--font-serif);
   font-size: clamp(52px, 9vw, 110px);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 100;
   color: #FFFFFF;
   line-height: 1;
   margin: 0;
@@ -2671,12 +2615,6 @@ button, a.btn, input, textarea, select {
   text-transform: uppercase;
   color: rgba(255,255,255,0.7);
   margin-bottom: 16px;
-}
-
-@media (max-width: 767px) {
-  .page-hero__eyebrow {
-    letter-spacing: 2px;
-  }
 }
 
 .page-hero__title {
@@ -3624,10 +3562,9 @@ button, a.btn, input, textarea, select {
 .values-scroll-container {
   height: 600vh;
   width: 100%;
+  max-width: 100vw;
   position: relative;
   background: #1A1A1A;
-  clip-path: inset(0);
-  overflow: hidden;
 }
 
 .values-header {
@@ -3801,12 +3738,6 @@ button, a.btn, input, textarea, select {
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 4px;
-}
-
-@media (max-width: 767px) {
-  .team-card__role {
-    letter-spacing: 1.5px;
-  }
 }
 
 .team-card__name {
