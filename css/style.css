@@ -107,7 +107,7 @@ body {
   line-height: 1.8;
   color: var(--color-black);
   background-color: var(--color-white);
-
+  overflow-x: clip;
 }
 
 @media (max-width: 767px) {
@@ -169,6 +169,12 @@ p.subtitle {
   color: var(--color-grey);
   font-weight: 300;
   margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 767px) {
+  p.subtitle {
+    letter-spacing: 1.5px;
+  }
 }
 
 a {
@@ -456,7 +462,7 @@ nav.pill-nav .nav-links a.active::after {
 .hero-video__bg {
   position: fixed;
   inset: 0;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 0;
@@ -467,7 +473,7 @@ nav.pill-nav .nav-links a.active::after {
   inset: 0;
   background: rgba(0, 0, 0, 0.249);
   z-index: 1;
-  width: 100vw;
+  width: 100%;
 }
 
 .hero-video__content {
@@ -495,6 +501,24 @@ nav.pill-nav .nav-links a.active::after {
   text-transform: uppercase;
   color: rgba(255,255,255,0.8);
 }
+
+@media (max-width: 767px) {
+  .hero-sub {
+    letter-spacing: 2px;
+  }
+}
+
+/* Mobile: Switch hero video from fixed to absolute positioning */
+@media (max-width: 767px) {
+  .hero-video__bg {
+    position: absolute;
+  }
+
+  .hero-video__overlay {
+    position: absolute;
+  }
+}
+
 /* 7. BUTTONS */
 
 button, .btn {
@@ -814,6 +838,12 @@ section.hero-off-white {
   color: #8C92AC;
 }
 
+@media (max-width: 767px) {
+  .stat-label {
+    letter-spacing: 1.5px;
+  }
+}
+
 /* Responsive stats strip on mobile */
 @media (max-width: 767px) {
   .stats-strip {
@@ -888,6 +918,12 @@ section.hero-off-white {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #1A1A1A;
+}
+
+@media (max-width: 767px) {
+  .backstory__image-tag span {
+    letter-spacing: 1.5px;
+  }
 }
 
 .backstory__image-tag span:last-child {
@@ -1014,6 +1050,12 @@ section.hero-off-white {
   padding: 6px 14px;
   border-radius: 50px;
   margin-bottom: 24px;
+}
+
+@media (max-width: 767px) {
+  .wwd__tag {
+    letter-spacing: 1.5px;
+  }
 }
 
 .wwd__text h3 {
@@ -1234,6 +1276,12 @@ section.hero-off-white {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.8);
+}
+
+@media (max-width: 767px) {
+  .bento-label {
+    letter-spacing: 1.5px;
+  }
 }
 
 /* Hover description */
@@ -1583,6 +1631,12 @@ footer {
   text-transform: uppercase;
   color: #FFFFFF;
   margin-bottom: 24px;
+}
+
+@media (max-width: 767px) {
+  .footer-section h4 {
+    letter-spacing: 1.5px;
+  }
 }
 
 /* Quick links */
@@ -2494,6 +2548,12 @@ button, a.btn, input, textarea, select {
   display: block;
 }
 
+@media (max-width: 767px) {
+  .hero__static {
+    letter-spacing: 2px;
+  }
+}
+
 .hero__typewriter {
   font-family: var(--font-serif);
   font-size: clamp(52px, 9vw, 110px);
@@ -2611,6 +2671,12 @@ button, a.btn, input, textarea, select {
   text-transform: uppercase;
   color: rgba(255,255,255,0.7);
   margin-bottom: 16px;
+}
+
+@media (max-width: 767px) {
+  .page-hero__eyebrow {
+    letter-spacing: 2px;
+  }
 }
 
 .page-hero__title {
@@ -3557,16 +3623,19 @@ button, a.btn, input, textarea, select {
 
 .values-scroll-container {
   height: 600vh;
+  width: 100%;
   position: relative;
   background: #1A1A1A;
+  clip-path: inset(0);
+  overflow: hidden;
 }
 
 .values-header {
   position: sticky;
-  top: 0;
+  top: 150px;
   z-index: 2;
   text-align: center;
-  padding: 100px 24px 20px;
+  padding: 0px 24px 20px;
   flex-shrink: 0;
 }
 
@@ -3586,13 +3655,14 @@ button, a.btn, input, textarea, select {
 .values-sticky {
    position: sticky;
   top: 0;
-  height: 100svh;
+  height: 100vh;
   overflow: hidden;
   background: #1A1A1A;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 }
 
 .values-inner {
@@ -3678,41 +3748,6 @@ button, a.btn, input, textarea, select {
   line-height: 1.9;
 }
 
-
-/* Mobile: disable horizontal scroll, stack vertically
-@media (max-width: 767px) {
-  .values-scroll-container {
-    height: auto;
-  }
-
-  .values-sticky {
-    position: static;
-    height: auto;
-  }
-
-  .values-inner {
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-  }
-
-  .values-panel {
-    width: 100%;
-    height: auto;
-    border-top: 1px solid var(--color-teal);
-    padding: 40px 24px;
-    flex-direction: column;
-  }
-
-  .values-panel__bg-text {
-    display: none;
-  }
-
-  .values-panel__content {
-    max-width: 100%;
-  }
-} */
-
 /* ──────────────────────────────────────────────────────── */
 /* SECTION 2: MEET THE TEAM - Cards (Desktop) / Carousel (Mobile) */
 /* ──────────────────────────────────────────────────────── */
@@ -3768,6 +3803,12 @@ button, a.btn, input, textarea, select {
   margin-bottom: 4px;
 }
 
+@media (max-width: 767px) {
+  .team-card__role {
+    letter-spacing: 1.5px;
+  }
+}
+
 .team-card__name {
   font-family: var(--font-serif);
   font-size: 22px;
@@ -3801,7 +3842,7 @@ button, a.btn, input, textarea, select {
     flex: 0 0 70%;
     grid-template-columns: 1fr;
     scroll-snap-align: center;
-    margin: 16px;
+    margin: 1px;
     max-height: 1000px;
   }
 
