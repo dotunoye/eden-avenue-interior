@@ -666,7 +666,7 @@ button.btn-pill {
 }
 
 .card-body {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -699,7 +699,7 @@ button.btn-pill {
   color: var(--color-grey);
   line-height: 1.6;
   flex-grow: 1;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
 }
 
 .card-cta {
@@ -2491,7 +2491,7 @@ button, a.btn, input, textarea, select {
   font-weight: 300;
   color: #FFFFFF;
   line-height: 1;
-  margin: 0;
+  margin: -1px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3347,14 +3347,14 @@ button, a.btn, input, textarea, select {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  font-size: 24px;
+  font-size: 32px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
   transition: background 0.3s ease;
-  color: red;
+  color: black;
 }
 
 .portfolio-modal__close:hover {
@@ -3381,7 +3381,7 @@ button, a.btn, input, textarea, select {
   flex-direction: column;
   justify-content: center;
   overflow-y: auto;
-  padding-top: 32px;
+  padding-top: 16px;
 }
 
 .portfolio-modal__location {
@@ -3494,6 +3494,7 @@ button, a.btn, input, textarea, select {
   .portfolio-modal__box {
     max-height: 85vh;
     overflow-y: auto;
+    padding: 12px 12px 12px;
   }
 
   .portfolio-modal__image img {

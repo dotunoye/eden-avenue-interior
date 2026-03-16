@@ -148,7 +148,7 @@ window.siteData = {
     {
       id: 'drape-001',
       name: 'Sheers Collection Premium',
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+      image: 'https://m.media-amazon.com/images/I/91j6vuauhtL._AC_SL1500_.jpg',
       description: 'Ethereal, light-diffusing sheers in neutral tones to soften natural light beautifully.',
       priceRange: '₦45,000 – ₦120,000',
       cta: 'Get a Quote',
@@ -157,7 +157,7 @@ window.siteData = {
     {
       id: 'drape-002',
       name: 'Velvet Blackout Drapes',
-      image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80',
+      image: 'https://www.halfpricedrapes.com/cdn/shop/files/VPCH-180105-front-view.jpg?v=1762530120',
       description: 'Luxurious velvet with blackout lining, perfect for bedrooms and media rooms.',
       priceRange: '₦85,000 – ₦250,000',
       cta: 'Get a Quote',
@@ -166,7 +166,7 @@ window.siteData = {
     {
       id: 'drape-003',
       name: 'Linen Casual Natural',
-      image: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&q=80',
+      image: 'https://images-cdn.ubuy.com.sa/65fb56d38e702128af5dfaf8-bohogeo-natural-linen-beige-back-tab.jpg',
       description: 'Relaxed linen drapes bringing warmth and texture to any interior space.',
       priceRange: '₦50,000 – ₦140,000',
       cta: 'Get a Quote',
@@ -174,9 +174,9 @@ window.siteData = {
     },
     {
       id: 'drape-004',
-      name: 'Patterned Silk Blend',
-      image: 'https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800&q=80',
-      description: 'Hand-selected patterns on silk blend fabric for sophisticated statement windows.',
+      name: 'Silk Blend',
+      image: 'https://www.halfpricedrapes.com/cdn/shop/files/PDCH-KBS7BO-DW-front-view_4f9d0607-c8a7-47d8-894d-0b651c4764bb.jpg?v=1767901821&width=1000',
+      description: 'Hand-selected silk blend fabric for sophisticated statement windows.',
       priceRange: '₦120,000 – ₦320,000',
       cta: 'Get a Quote',
       featured: false
@@ -184,7 +184,7 @@ window.siteData = {
     {
       id: 'drape-005',
       name: 'Motorized Smart Drapes',
-      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80',
+      image: 'https://cdn.thewirecutter.com/wp-content/media/2025/02/BEST-SMART-SHADES-BLINDS-2048px-smartwings-motorized-drapery.jpg?auto=webp&quality=75&width=1024',
       description: 'App-controlled automation with multiple fabric options and custom sizing.',
       priceRange: '₦200,000 – ₦450,000',
       cta: 'Get a Quote',
