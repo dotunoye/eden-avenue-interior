@@ -52,10 +52,10 @@
         </a>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="interiors.html">Interiors</a></li>
-        <li><a href="homes.html">Homes</a></li>
+        <li><a href="homes.html" class="active">Homes</a></li>
         <li><a href="drapes.html">Drapes</a></li>
         <li><a href="flooring.html">Flooring</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -72,8 +72,8 @@
   <div class="mobile-menu" role="navigation" aria-label="Mobile navigation">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="interiors.html">Interiors</a>
-    <a href="homes.html" class="active">Homes</a>
+    <a href="interiors.html" class="active">Interiors</a>
+    <a href="homes.html">Homes</a>
     <a href="drapes.html">Drapes</a>
     <a href="flooring.html">Flooring</a>
     <a href="contact.html">Contact</a>
@@ -82,79 +82,69 @@
   <main id="main">
 
     <!-- HERO SECTION -->
-    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600&auto=format&fit=crop&q=80')">
+    <section class="hero" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63dde481bbabc6724d988548/0ae39347-f44e-4d15-ba56-432e8fd274b1/_56c4f117-cec2-498e-a7f4-267c2860694c.jpeg')">
       <div class="hero-content">
-        <h1>Residential Projects</h1>
-        <p class="subtitle">Luxury Homes Designed for Living</p>
+        <h1>Home Accessories</h1>
+        <p class="subtitle">The details that make a house a home</p>
       </div>
     </section>
 
-    <!-- INTRO SECTION -->
-    <section class="hero-light">
-      <div class="container-section">
-        <h2>Creating Dream Homes</h2>
-        <p>
-          A residential project transcends decoration—it's about creating a sanctuary that supports how you actually live. From waterfront villas to urban penthouses, Eden Avenue specializes in bespoke home design that merges luxury, comfort, and functionality. Our team works collaboratively with each family to ensure their home tells their unique story.
-        </p>
-        <div class="process-steps">
-          <div class="process-step">
-            <div class="process-number">01</div>
-            <h3>Space Planning</h3>
-            <p>We optimize your layout for flow, light, and livability based on your family's needs.</p>
+     <!-- PORTFOLIO GRID -->
+    <div class="section-wrap">
+      <section class="portfolio">
+        <div class="portfolio__inner">
+          <div class="portfolio__header anim anim--fade-up">
+            <span class="section-eyebrow">Our Work</span>
+            <h2>Interior <em>Projects</em></h2>
+            <p>A curated selection of spaces we have designed, styled and delivered across Lagos.</p>
           </div>
-          <div class="process-step">
-            <div class="process-number">02</div>
-            <h3>Design Development</h3>
-            <p>Detailed 3D renderings and material selections bring your vision into focus before execution.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-number">03</div>
-            <h3>Sourcing & Coordination</h3>
-            <p>We manage vendors, furniture makers, and artisans to deliver premium quality on schedule.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-number">04</div>
-            <h3>Installation & Handover</h3>
-            <p>Professional installation and final styling ensure your home is ready to move into.</p>
-          </div>
+          <div id="grid-homes" class="portfolio-grid portfolio-grid--top"></div>
         </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO GRID -->
-    <section class="hero-off-white">
-      <div class="container-section">
-        <h2>Our Homes</h2>
-        <p>A selection of luxury residential projects showcasing our expertise in creating beautiful, functional family homes.</p>
-        <div id="grid-homes" class="portfolio-grid" style="margin-top: 48px;"></div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- MODAL -->
     <div class="portfolio-modal" id="portfolio-modal" role="dialog" aria-modal="true" aria-label="Project details">
       <div class="portfolio-modal__overlay" id="modal-overlay"></div>
       <div class="portfolio-modal__box">
         <button class="portfolio-modal__close" id="modal-close" aria-label="Close modal">&times;</button>
-        <div class="portfolio-modal__image">
+        <div class="portfolio-modal__image portfolio-grid--top">
           <img id="modal-image" src="" alt="">
         </div>
         <div class="portfolio-modal__content">
-          <span class="portfolio-modal__location" id="modal-location"></span>
-          <h2 class="portfolio-modal__name" id="modal-name"></h2>
+          <div class="portfolio-modal__header">
+            <div class="portfolio-modal__header-left">
+              <span class="portfolio-modal__location" id="modal-location"></span>
+              <h2 class="portfolio-modal__name" id="modal-name"></h2>
+            </div>
+            <a href="javascript:void(0);" class="btn-teal btn-pill portfolio-modal__cta">ORder</a>
+          </div>
+        
           <p class="portfolio-modal__desc" id="modal-desc"></p>
-          <span class="portfolio-modal__price" id="modal-price"></span>
-          <a href="javascript:void(0);" class="btn-teal btn-pill portfolio-modal__cta">Book a Session</a>
+          
+          <div class="portfolio-modal__footer">
+            <span class="portfolio-modal__price" id="modal-price"></span>
+          </div>
+          <a href="javascript:void(0);" class="btn-teal btn-pill portfolio-modal__cta-mobile">Book a Session</a>
         </div>
       </div>
     </div>
 
-    <!-- CTA BANNER -->
-    <section class="cta-banner">
-      <div class="container-section text-center">
-        <p class="cta-banner-text">Let's Design Your Dream Home</p>
-        <a href="contact.html" class="btn btn-secondary">Start Your Project</a>
-      </div>
-    </section>
+
+      <!-- CTA BANNER -->
+  <section class="cta-banner">
+  <div class="cta-banner__inner">
+    <span class="section-eyebrow" style="color: rgba(255,255,255,0.6);">Let's Create Together</span>
+    <h2 class="cta-banner__title">Your dream space is closer than you think</h2>
+    <p class="cta-banner__sub">Every great space starts with a single conversation. Eden Avenue is ready when you are.</p>
+    <div class="cta-banner__btns">
+      <a href="contact.html" class="cta-banner__btn cta-banner__btn--solid">Start a Conversation</a>
+      <a href="contact.html#map"
+         target="_blank" 
+         class="cta-banner__btn cta-banner__btn--ghost">Find Us on the Map</a>
+    </div>
+  </div>
+</section>
 
   </main>
 
@@ -239,8 +229,8 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Homes",
-        "item": "https://edenaveinteriors.com/homes.html"
+        "name": "Interiors",
+        "item": "https://edenaveinteriors.com/interiors.html"
       }
     ]
   }
@@ -251,7 +241,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Residential Design",
+    "name": "Interior Design",
     "provider": {
       "@type": "LocalBusiness",
       "name": "Eden Avenue Interiors"
@@ -260,7 +250,7 @@
       "@type": "City",
       "name": "Lagos"
     },
-    "serviceType": "Luxury Home Design"
+    "serviceType": "Interior Design"
   }
   </script>
 

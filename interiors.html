@@ -89,7 +89,7 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO GRID -->
+     <!-- PORTFOLIO GRID -->
     <div class="section-wrap">
       <section class="portfolio">
         <div class="portfolio__inner">
@@ -112,23 +112,39 @@
           <img id="modal-image" src="" alt="">
         </div>
         <div class="portfolio-modal__content">
-          <span class="portfolio-modal__location" id="modal-location"></span>
-          <h2 class="portfolio-modal__name" id="modal-name"></h2>
+          <div class="portfolio-modal__header">
+            <div class="portfolio-modal__header-left">
+              <span class="portfolio-modal__location" id="modal-location"></span>
+              <h2 class="portfolio-modal__name" id="modal-name"></h2>
+            </div>
+            <a href="javascript:void(0);" class="btn-teal btn-pill portfolio-modal__cta">Book a Session</a>
+          </div>
+        
           <p class="portfolio-modal__desc" id="modal-desc"></p>
-          <span class="portfolio-modal__price" id="modal-price"></span>
-          <a href="javascript:void(0);" class="btn-teal btn-pill portfolio-modal__cta">Book a Session</a>
+          
+          <div class="portfolio-modal__footer">
+            <span class="portfolio-modal__price" id="modal-price"></span>
+          </div>
+          <a href="javascript:void(0);" class="btn-teal btn-pill portfolio-modal__cta-mobile">Book a Session</a>
         </div>
       </div>
     </div>
 
 
-    <!-- CTA BANNER -->
-    <section class="cta-banner">
-      <div class="container-section text-center">
-        <p class="cta-banner-text">Inspired? Let's Create Something Beautiful</p>
-        <a href="contact.html" class="btn btn-secondary">Get Started Today</a>
-      </div>
-    </section>
+     <!-- CTA BANNER -->
+  <section class="cta-banner">
+  <div class="cta-banner__inner">
+    <span class="section-eyebrow" style="color: rgba(255,255,255,0.6);">Let's Create Together</span>
+    <h2 class="cta-banner__title">Your dream space is closer than you think</h2>
+    <p class="cta-banner__sub">Every great space starts with a single conversation. Eden Avenue is ready when you are.</p>
+    <div class="cta-banner__btns">
+      <a href="contact.html" class="cta-banner__btn cta-banner__btn--solid">Start a Conversation</a>
+      <a href="contact.html#map"
+         target="_blank" 
+         class="cta-banner__btn cta-banner__btn--ghost">Find Us on the Map</a>
+    </div>
+  </div>
+</section>
 
   </main>
 

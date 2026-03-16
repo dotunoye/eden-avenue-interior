@@ -25,12 +25,12 @@ function renderPortfolioCards(items, containerId) {
          data-name="${item.name}"
          data-image="${item.image}"
          data-description="${item.description}"
-         data-location="${item.location}"
+         data-location="${item.location || ''}"
          data-price="${item.priceRange || ''}"
          data-desc="${item.description}">
       <div class="card-img-wrap">
         <img src="${item.image}"
-             alt="${item.name} - ${item.location}"
+             alt="${item.name}${item.location ? ' - ' + item.location : ''}"
              loading="lazy"
              width="400"
              height="300">
@@ -40,10 +40,10 @@ function renderPortfolioCards(items, containerId) {
       </div>
       <div class="card-body">
         <h3 class="card-title">${item.name}</h3>
-        <p class="card-location">${item.location}</p>
+        ${item.location ? `<p class="card-location">${item.location}</p>` : ''}
         <p class="card-desc">${item.description}</p>
         ${item.priceRange ? `<p class="card-price">${item.priceRange}</p>` : ''}
-        <a href="${generateWhatsAppLink(item.name)}" class="btn-teal btn-pill card-cta" aria-label="Book consultation for ${item.name}">Book a Consultation</a>
+        <a href="${generateWhatsAppLink(item.name)}" class="btn-teal btn-pill card-cta" aria-label="${item.cta || 'Book a Consultation'} for ${item.name}">${item.cta || 'Book a Consultation'}</a>
       </div>
     </div>
   `).join('');
