@@ -1523,7 +1523,7 @@ section.hero-off-white {
 footer {
   background: var(--color-black);
   border-top: var(--border-subtle);
-  padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 2vw, 2rem);
+  padding: clamp(2rem, 2vw, 4rem) clamp(1rem, 2vw, 2rem);
   color: white;
 }
 
@@ -1594,12 +1594,12 @@ footer {
   width: 40px;
   height: 40px;
   border-radius: 4px;
-  background: #0f53ba24;
+  background: #00808050;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
-  border: var(--border-subtle);
+  color: white;
+  border: 1px solid #008080;
   transition: var(--transition-smooth);
   cursor: pointer;
   text-decoration: none;
@@ -2320,7 +2320,8 @@ textarea {
     display: block;
     opacity: 1;
     margin-bottom: 0;
-    border-radius: 0;
+    border-radius: 12px;
+    padding: 16px;
   }
 
   .process__image-wrap img {
@@ -2328,7 +2329,7 @@ textarea {
     width: 100%;
     object-fit: cover;
     aspect-ratio: 1/1;
-    border-radius: 12px;
+    border-radius: 16px;
   }
 
   /* Hide indicators */
