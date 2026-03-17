@@ -497,7 +497,7 @@ button, .btn {
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border-radius: var(--radius-lg);
+  border-radius: 12px;
   padding: 2px 2px;
   border: 2px solid;
   cursor: pointer;
@@ -517,6 +517,8 @@ button.btn-primary {
   background: var(--color-teal);
   color: var(--color-white);
   border-color: var(--color-teal);
+   min-width: 44px;
+  max-width: 300px;
 }
 
 .btn-primary:hover,
@@ -915,7 +917,7 @@ section.hero-off-white {
 .backstory__quote {
   border-left: 2px solid #008080;
   padding-left: 20px;
-  margin: 32px 0 40px;
+  margin: 32px 0 0px;
 }
 
 .backstory__quote blockquote {
@@ -1061,7 +1063,7 @@ section.hero-off-white {
 /* ══ RESPONSIVE ══ */
 @media (max-width: 1023px) {
   .backstory__inner {
-    gap: 60px;
+    gap: 24px;
   }
 
   .wwd__split {
@@ -1513,8 +1515,107 @@ section.hero-off-white {
   }
 }
 
-/* 14. FOOTER - Dark background with brand, links, contact, social */
 
+/* ===========================
+   FOOTER
+   =========================== */
+
+footer {
+  background: var(--color-black);
+  border-top: var(--border-subtle);
+  padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 2vw, 2rem);
+  color: white;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(2rem, 3vw, 3rem);
+  margin-bottom: clamp(1rem, 3vw, 3rem);
+  justify-content: center;
+}
+
+.footer-section h4 {
+  margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+  color: var(--text-main);
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: clamp(0.75rem, 1vw, 1rem);
+}
+
+.footer-section a {
+  color: var(--text-muted);
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+}
+
+.footer-section a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  border-top: var(--border-subtle);
+  padding-top: clamp(1.5rem, 2vw, 2rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.footer-bottom-text {
+  color: var(--text-muted);
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+}
+
+.footer-socials {
+  display: flex;
+  gap: clamp(3rem, 1.5vw, 1rem);
+  justify-content: center;
+  margin-bottom: clamp(1rem, 2vw, 2rem);
+}
+
+.footer-socials li a i {
+  margin-right: 10px; /* Space between icon and text */
+  color: #888; /* Start with a muted grey (Subtle) */
+  transition: color 0.3s ease;
+  width: 20px; /* Fixed width ensures text aligns perfectly */
+  text-align: center;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background: #0f53ba24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  border: var(--border-subtle);
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.social-icon:hover {
+  background: var(--accent);
+  color: #1A1A1A;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* 14. FOOTER - Dark background with brand, links, contact, social */
+/* 
 footer {
   background: #1A1A1A;
   color: #FFFFFF;
@@ -1526,10 +1627,10 @@ footer {
   grid-template-columns: 1.4fr 1fr 1fr;
   gap: 60px;
   padding-bottom: 60px;
-}
+} */
 
 /* Brand info column */
-.footer-brand h3 {
+/* .footer-brand h3 {
   color: #FFFFFF;
   margin-bottom: 16px;
   line-height: 1.2;
@@ -1541,10 +1642,10 @@ footer {
   line-height: 1.8;
   max-width: 280px;
   margin-bottom: 24px;
-}
+} */
 
 /* Social icons */
-.footer-social {
+/* .footer-social {
   display: flex;
   gap: 12px;
 }
@@ -1564,10 +1665,10 @@ footer {
 .footer-social a:hover {
   border-color: #008080;
   color: #008080;
-}
+} */
 
 /* Section headings */
-.footer-section h4 {
+/* .footer-section h4 {
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 500;
@@ -1575,10 +1676,10 @@ footer {
   text-transform: uppercase;
   color: #FFFFFF;
   margin-bottom: 24px;
-}
+} */
 
 /* Quick links */
-.footer-links {
+/* .footer-links {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1596,10 +1697,10 @@ footer {
 
 .footer-links a:hover {
   color: #FFFFFF;
-}
+} */
 
 /* Contact list */
-.footer-contact {
+/* .footer-contact {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1622,10 +1723,10 @@ footer {
 
 .footer-contact a:hover {
   color: #FFFFFF;
-}
+} */
 
 /* Footer bottom */
-.footer-bottom {
+/* .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08);
   padding-top: 24px;
   display: flex;
@@ -1655,10 +1756,10 @@ footer {
   .footer-brand {
     grid-column: 1 / 3;
   }
-}
+} */
 
 /* Mobile */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   footer {
     padding: 60px 0 24px;
   }
@@ -1708,17 +1809,13 @@ footer {
     gap: 8px;
     text-align: center;
   }
-}
+} */
 
 /* 15. MODALS - Lightbox for card details */
 /** Uses  HTML structure with overlay, box, and content areas */
 
 /* 16. FORMS - Contact form with blush pink focus states */
 /** Labels: uppercase, teal text | Inputs: off-white bg, blush pink focus border */
-
-form {
-  max-width: 500px;
-}
 
 .form-group {
   margin-bottom: var(--spacing-lg);
@@ -2268,6 +2365,388 @@ textarea {
 
 }
 
+.contact-card {
+    background: var(--color-off-white);
+    border: 1px solid var(--color-teal);
+    border-radius: 8px;
+    padding: clamp(1rem, 2vw, 2rem);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md)
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 2vw, 2rem);
+}
+ 
+/* ── SECTIONS ── */
+/* All three bare <section> tags */
+section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+}
+ 
+/* ── PAGE HEADER SECTION ── */
+/* section style="padding-top: 150px; padding-bottom: var(--spacing-2xl); background: ..." */
+.contact-page-header {
+  padding-top: 150px;
+  padding-bottom: var(--spacing-2xl); /* 64px */
+  /* Note: background value in original is malformed — (135deg, ...) is missing linear-gradient() */
+  /* Keeping as-is: background renders as off-white fallback */
+  background: var(--bg-body);
+}
+ 
+/* h1 style="margin-bottom: var(--spacing-md)" */
+.contact-page-header h1 {
+  margin-bottom: var(--spacing-md); /* 24px */
+}
+ 
+/* p style="font-size: 1.2rem; color: var(--text-muted); max-width: 700px" */
+.contact-page-header p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 700px;
+}
+ 
+/* ── CONTACT SECTION GRID ── */
+/* div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start" */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+ 
+/* ── CONTACT INFO COLUMN ── */
+/* h2 style="margin-bottom: var(--spacing-xl)" */
+.contact-info-col h2 {
+  margin-bottom: var(--spacing-xl); /* 48px */
+}
+ 
+/* ── CONTACT CARD ── */
+/* article.contact-card style="margin-bottom: var(--spacing-lg)" */
+/* .contact-card {
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: clamp(1rem, 2vw, 2rem);
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(10px);
+  margin-bottom: var(--spacing-lg);
+} */
+ 
+.contact-card:last-of-type {
+  margin-bottom: 0;
+}
+ 
+.contact-card:hover {
+  border-color: #0f53ba57;
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+}
+ 
+/* h3 style="color: var(--accent); margin-bottom: var(--spacing-md); display: flex; gap: var(--spacing-sm); align-items: center" */
+.contact-card h3 {
+  color: var(--color-teal);
+  margin-bottom: var(--spacing-md); /* 24px */
+  display: flex;
+  gap: var(--spacing-sm); /* 16px */
+  align-items: center;
+}
+ 
+/* span style="font-size: 1.5rem" — emoji icon inside h3 */
+.contact-card h3 span {
+  font-size: 1.5rem;
+}
+ 
+/* p style="margin-bottom: var(--spacing-sm)" — repeated on most card paragraphs */
+.contact-card p {
+  margin-bottom: var(--spacing-sm); /* 16px */
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+ 
+.contact-card p:last-child {
+  margin-bottom: 0;
+}
+ 
+/* p style="margin-bottom: var(--spacing-md)" — used in Locations card */
+.contact-card p.contact-card__location-item {
+  margin-bottom: var(--spacing-md); /* 24px */
+  font-family: var(--font-sans);
+}
+ 
+/* a style="color: var(--accent)" — phone/email links inside cards */
+.contact-card a {
+  color: var(--color-teal);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+ 
+.contact-card a:hover {
+  color: var(--accent-light);
+}
+ 
+/* p style="margin-top: var(--spacing-md); padding-top: var(--spacing-md); border-top: var(--border-subtle); font-size: 0.9rem; color: var(--text-muted)" */
+/* Holiday hours note at bottom of Business Hours card */
+.contact-card__note {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: var(--border-subtle);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+ 
+/* ── CONTACT FORM COLUMN ── */
+/* h2 style="margin-bottom: var(--spacing-xl)" */
+.contact-form-col h2 {
+  margin-bottom: var(--spacing-xl); /* 48px */
+}
+ 
+/* form#contactForm.contact-card — form uses same card style, no extra styles needed */
+ 
+/* ── FORM GROUPS ── */
+.form-group {
+  margin-bottom: clamp(1.5rem, 2vw, 2rem);
+}
+ 
+.form-group label {
+  display: block;
+  margin-bottom: clamp(0.75rem, 1vw, 1rem);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+ 
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 1.5vw, 1.5rem);
+  background: #0080801b;
+  border: 1px #b7ffff ;
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  transition: var(--transition-smooth);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+ 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+ 
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  background: #0f53ba24;
+  border-color: var(--accent);
+  box-shadow: 0 0 15px #0f53ba39;
+}
+ 
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+ 
+/* select style="background: rgba(255,255,255,0.05); border: var(--border-subtle); border-radius: var(--radius-small); padding: var(--spacing-sm) var(--spacing-md); color: var(--text-main); font-family: 'Outfit'; cursor: pointer" */
+.form-group select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: var(--border-subtle);
+  border-radius: var(--radius-small);
+  padding: var(--spacing-sm) var(--spacing-md); /* 16px 24px */
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+ 
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 15px #0f53ba39;
+}
+ 
+/* Checkbox form group: style="display: flex; gap: var(--spacing-md); align-items: center; margin-bottom: var(--spacing-lg)" */
+.form-group--checkbox {
+  display: flex;
+  gap: var(--spacing-md); /* 24px */
+  align-items: center;
+  margin-bottom: var(--spacing-lg); /* 32px */
+}
+ 
+/* input[type=checkbox] style="width: 20px; height: 20px; cursor: pointer" */
+.form-group--checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+ 
+/* label for="terms" style="margin-bottom: 0; cursor: pointer" */
+.form-group--checkbox label {
+  margin-bottom: 0;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-weight: 400;
+}
+ 
+/* ── SUBMIT BUTTON ── */
+/* button.btn.btn-primary style="width: 100%; justify-content: center; padding: var(--spacing-md) var(--spacing-lg); font-size: 1rem" */
+
+.contact-btn-primary {
+  background: var(--color-teal);
+  color: #1A1A1A;
+  box-shadow: var(--color-teal);
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  height: 10px;
+  width: 100%;
+  justify-content: center;
+  padding: var(--spacing-md) var(--spacing-lg); /* 24px 32px */
+  font-size: 1rem;
+}
+ 
+.contact-btn-primary:hover {
+  background: var(--color-teal-dark);
+  transform: translateY(-2px);
+}
+
+ 
+/* ── QUICK RESPONSE NOTE ── */
+/* div style="margin-top: var(--spacing-lg); padding: var(--spacing-lg); background: rgba(59,130,246,0.1); border-left: 3px solid var(--accent); border-radius: var(--radius-small)" */
+.contact-quick-note {
+  margin-top: var(--spacing-lg); /* 32px */
+  padding: var(--spacing-lg); /* 32px */
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-small);
+}
+ 
+/* p style="font-size: 0.95rem" inside quick note */
+.contact-quick-note p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+ 
+/* strong style="color: var(--accent)" inside quick note */
+.contact-quick-note strong {
+  color: var(--accent);
+}
+ 
+/* ── FAQ SECTION ── */
+/* section style="background: var(--bg-card)" */
+.contact-faq-section {
+  background: var(--bg-card);
+}
+ 
+/* section-title style="margin-bottom: var(--spacing-2xl)" */
+.section-title {
+  text-align: center;
+  align-self: center;
+}
+ 
+.contact-faq-section .section-title {
+  margin-bottom: var(--spacing-2xl); /* 64px */
+}
+ 
+.section-title h2 {
+  color: var(--text-main);
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  text-align: center;
+}
+ 
+/* div style="max-width: 800px; margin: 0 auto" — FAQ list wrapper */
+.contact-faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+ 
+/* FAQ cards: same .contact-card + h3 style="margin-bottom: var(--spacing-md); color: var(--accent)" */
+.contact-faq-list .contact-card h3 {
+  margin-bottom: var(--spacing-md); /* 24px */
+  color: var(--accent);
+  /* Note: no flex/gap here — FAQ h3 is plain text, not flex with icon */
+  display: block;
+}
+ 
+/* ── MAP SECTION ── */
+/* section-title style="margin-bottom: var(--spacing-xl)" */
+.contact-map-section .section-title {
+  margin-bottom: var(--spacing-xl); /* 48px */
+}
+ 
+.contact-map-embed {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-teal);
+}
+ 
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+ 
+  .contact-map-placeholder {
+    height: 280px;
+  }
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 21. RESPONSIVE ADJUSTMENTS */
 
@@ -2335,12 +2814,7 @@ textarea {
   .hero-buttons {
     flex-direction: column;
     align-items: center;
-  }
-
-  button, .btn {
-    width: 100%;
-    max-width: 300px;
-  }
+  } 
 }
 
 @media (max-width: 480px) {
@@ -2407,11 +2881,11 @@ textarea:focus {
 }
 
 /* Ensure 44x44px tap targets */
-button, a.btn, input, textarea, select {
+/* button, a.btn, select {
   min-height: 44px;
   min-width: 44px;
   max-width: 300px;
-}
+} */
 
 /* 23. UTILITY CLASSES */
 

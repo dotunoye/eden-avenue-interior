@@ -384,6 +384,37 @@ const targets = [
   document.querySelectorAll('.anim').forEach(el => observer.observe(el));
 }
 
+/* ========== PROCESS SCROLL - Sticky text + scrolling images ========== */
+function initProcessScroll() {
+  const phases = document.querySelectorAll('.process__phase');
+  const imageWraps = document.querySelectorAll('.process__image-wrap');
+
+  if (!phases.length || !imageWraps.length) return;
+
+  // Activate first phase by default
+  phases[0].classList.add('active');
+  imageWraps[0].classList.add('active');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const phase = entry.target.dataset.phase;
+
+        // Deactivate all
+        phases.forEach(p => p.classList.remove('active'));
+        imageWraps.forEach(img => img.classList.remove('active'));
+
+        // Activate matching ones
+        const matchingPhase = document.querySelector(`.process__phase[data-phase="${phase}"]`);
+        if (matchingPhase) matchingPhase.classList.add('active');
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  imageWraps.forEach(wrap => observer.observe(wrap));
+}
+
 /* ========== PAGE INITIALIZATION ========== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -412,6 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initTypewriter();
   initScrollAnimations();
+  initProcessScroll();
 });
 
 /* ========== ERROR HANDLING ========== */

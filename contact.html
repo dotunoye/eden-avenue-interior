@@ -19,7 +19,7 @@
   <meta property="og:url" content="https://edenaveinteriors.com">
   <meta property="og:site_name" content="Eden Avenue Interiors">
 
-  <!-- Meta: Twitter Card -->
+  <!-- Meta: Twitter card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Eden Avenue Interiors – Premium Interior Design">
   <meta name="twitter:description" content="Luxury interior design and home solutions in Lagos, Nigeria.">
@@ -81,101 +81,254 @@
 
   <main id="main">
 
-    <!-- CONTACT SPLIT LAYOUT -->
-    <div class="contact-split">
-      <!-- LEFT: CONTACT INFO (Off-white background) -->
-      <div class="contact-info">
-        <div class="container-section" style="max-width: none;">
-          <div class="contact-item">
-            <span class="contact-label">Office Address</span>
-            <p class="contact-text">
-              3 Alhaji Adekunle Bisi Street<br>
-              Ogudu GRA, Lagos 106104<br>
-              Nigeria
-            </p>
-          </div>
+    <!-- PAGE HEADER -->
+  <section class="contact-page-header">
+    <div class="container">
+      <h1>Get In Touch</h1>
+      <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 700px;">
+        Have questions? Our expert team is ready to help. Reach out using any of the methods below.
+      </p>
+    </div>
+  </section>
 
-          <div class="contact-item">
-            <span class="contact-label">Get In Touch</span>
-            <p class="contact-text">
-              <strong>Email</strong><br>
-              <a href="mailto:hello@edenaveinteriors.com">hello@edenaveinteriors.com</a><br>
-              <br>
-              <strong>Phone</strong><br>
-              <a href="tel:+2348000000000">+234 (800) 000-0000</a>
+  <!-- CONTACT SECTION -->
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- CONTACT INFO -->
+        <div>
+          <h2 style="margin-bottom: var(--spacing-md);">Contact Information</h2>
+          
+          <article class="contact-card">
+            <h3>
+              <span style="font-size: 1.5rem;">📞</span>
+              Phone
+            </h3>
+            <p>
+              <strong>Manhattan:</strong><br>
+              <a href="tel:+15551234567">+1 (555) 123-4567</a>
             </p>
-          </div>
-
-          <div class="contact-item">
-            <span class="contact-label">Hours</span>
-            <p class="contact-text">
-              Monday – Friday: 9:00 AM – 6:00 PM<br>
-              Saturday: 10:00 AM – 4:00 PM<br>
-              Sunday: Closed<br>
-              <br>
-              <em>Available for consultations by appointment.</em>
+            <p>
+              <strong>Los Angeles:</strong><br>
+              <a href="tel:+15552345678" >+1 (555) 234-5678</a>
             </p>
-          </div>
+            <p>
+              <strong>Miami Beach:</strong><br>
+              <a href="tel:+15553456789" >+1 (555) 345-6789</a>
+            </p>
+          </article>
 
-          <div class="contact-item">
-            <span class="contact-label">Follow Us</span>
-            <div class="footer-social" style="margin-top: 12px;">
-              <a href="https://instagram.com/edenaveinteriors" aria-label="Instagram" target="_blank" rel="noopener">
-                <span style="font-size: 18px;">📷</span>
-              </a>
-              <a href="https://facebook.com/edenaveinteriors" aria-label="Facebook" target="_blank" rel="noopener">
-                <span style="font-size: 18px;">f</span>
-              </a>
-              <a href="https://linkedin.com/company/edenaveinteriors" aria-label="LinkedIn" target="_blank" rel="noopener">
-                <span style="font-size: 18px;">in</span>
-              </a>
-            </div>
-          </div>
+          <article class="contact-card">
+            <h3>
+              <span style="font-size: 1.5rem;">📧</span>
+              Email
+            </h3>
+            <p>
+              <strong>General Inquiries:</strong><br>
+              <a href="mailto:info@apexauto.com" >info@apexauto.com</a>
+            </p>
+            <p>
+              <strong>Sales:</strong><br>
+              <a href="mailto:sales@apexauto.com" >sales@apexauto.com</a>
+            </p>
+            <p>
+              <strong>Service:</strong><br>
+              <a href="mailto:service@apexauto.com" >service@apexauto.com</a>
+            </p>
+          </article>
+
+          <article class="contact-card">
+            <h3>
+              <span style="font-size: 1.5rem;">📍</span>
+              Locations
+            </h3>
+            <p>
+              <strong>Manhattan Flagship</strong><br>
+              123 Luxury Lane<br>
+              New York, NY 10022<br><br>
+              <strong>Hours:</strong> Mon-Fri 9 AM - 8 PM | Sat 10 AM - 6 PM | Sun Closed
+            </p>
+            <p>
+              ⚠️ Holiday hours may vary. Please call ahead during holidays.
+            </p>
+          </article>
         </div>
-      </div>
 
-      <!-- RIGHT: CONTACT FORM (White background) -->
-      <div class="contact-form">
-        <div class="container-section" style="max-width: none;">
-          <h2 style="display: block; margin-bottom: 32px;">Send us a Message</h2>
-          <form id="contact-form" method="POST" action="#" style="max-width: none;">
+        <!-- CONTACT FORM -->
+        <div>
+          <h2 style="margin-bottom: var(--spacing-md);">Send Us a Message</h2>
+          <form id="contactForm" class="contact-card">
             <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
             </div>
 
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required aria-required="true">
+              <input type="email" id="email" name="email" required placeholder="john@example.com">
             </div>
 
             <div class="form-group">
               <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="+234 (800) 000-0000">
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
             </div>
-
             <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="What is this about?" required aria-required="true">
+              <label for="vehicle">Interested In (Optional)</label>
+              <input type="text" id="vehicle" name="vehicle" placeholder="e.g., Mercedes S-Class, BMW M5">
             </div>
 
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell us about your project, timeline, budget, and any specific requirements..." required aria-required="true"></textarea>
+              <textarea id="message" name="message" required placeholder="Tell us how we can help..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="margin-top: 12px; width: auto;">Send Message</button>
-            <p style="font-size: 12px; color: var(--color-grey); margin-top: 16px;">
-              We typically respond within 24 business hours. Looking forward to hearing from you!
-            </p>
+            <button type="submit" class="contact-btn-primary">
+              Send Message
+            </button>
           </form>
+
+          
         </div>
       </div>
     </div>
+  </section>
+
+    <!-- MAP SECTION -->
+ <!-- MAP SECTION -->
+<section>
+  <div class="container">
+    <div class="section-title" style="margin-bottom: var(--spacing-xl);">
+      <h2>Visit Our Studio</h2>
+    </div>
+    <div class="contact-map-embed">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.5583429665658!2d3.3869139!3d6.5772861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b9370dda5930d%3A0x933ac987858c3d9d!2sEden%20Avenue%20Interiors%20(%20Bespoke%20Living%20room%20and%20Bedroom%20Furniture)!5e0!3m2!1sen!2sng!4v1773763586007!5m2!1sen!2sng"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Eden Avenue Interiors - Ogudu GRA, Lagos">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+  <!-- FAQ SECTION -->
+  <section style="background: var(--bg-contact-card);">
+    <div class="container">
+      <div class="section-title" style="margin-bottom: var(--spacing-2xl);">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="contact-card" style="margin-bottom: var(--spacing-lg);">
+          <h3>What are your business hours?</h3>
+          <p>
+            We're open Monday through Friday from 9 AM to 8 PM, Saturdays from 10 AM to 6 PM, and closed on Sundays. Hours may vary by location. Please contact your nearest showroom for specific hours.
+          </p>
+        </div>
+
+        <div class="contact-card" style="margin-bottom: var(--spacing-lg);">
+          <h3>Do you offer financing options?</h3>
+          <p>
+            Yes! We partner with leading financial institutions to offer competitive financing options including loans, leases, and extended payment plans. Our team can discuss the best options for your situation.
+          </p>
+        </div>
+
+        <div class="contact-card" style="margin-bottom: var(--spacing-lg);">
+          <h3>Can I schedule a test drive online?</h3>
+          <p>
+            Absolutely! You can schedule a test drive through our website or by calling any of our locations. We recommend booking in advance to ensure vehicle availability and ensure our team can give you personalized attention.
+          </p>
+        </div>
+
+        <div class="contact-card" style="margin-bottom: var(--spacing-lg);">
+          <h3>What warranty coverage do you provide?</h3>
+          <p>
+            All vehicles come with our comprehensive 3-year warranty covering parts and labor, plus 24/7 roadside assistance. Extended warranty options are also available. Full details are provided with each purchase.
+          </p>
+        </div>
+
+        <div class="contact-card" style="margin-bottom: var(--spacing-lg);">
+          <h3>How is your trade-in valuation process?</h3>
+          <p>
+            We provide fair, market-based valuations for your vehicle. Bring your car in for a professional inspection, or use our online estimation tool for a quick quote. We ensure transparent, competitive pricing.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <h3>Do you provide delivery services?</h3>
+          <p>
+            Yes! For customers who prefer, we can arrange secure delivery of your vehicle. Additional fees may apply depending on location. Contact our sales team for delivery options.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- CTA BANNER -->
+  <section class="cta-banner">
+  <div class="cta-banner__inner">
+    <span class="section-eyebrow" style="color: rgba(255,255,255,0.6);">Let's Create Together</span>
+    <h2 class="cta-banner__title">Your dream space is closer than you think</h2>
+    <p class="cta-banner__sub">Every great space starts with a single conversation. Eden Avenue is ready when you are.</p>
+    <div class="cta-banner__btns">
+      <a href="contact.html" class="cta-banner__btn cta-banner__btn--solid">Start a Conversation</a>
+      <a href="contact.html#map"
+         target="_blank" 
+         class="cta-banner__btn cta-banner__btn--ghost">Find Us on the Map</a>
+    </div>
+  </div>
+</section>
+  
 
   </main>
 
   <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Polanco Exotic Cars</h4>
+        <p style="color: var(--text-muted);">
+          Premium luxury car dealership serving discerning clients worldwide.
+        </p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p style="color: var(--text-muted);">
+          📍 123 Luxury Lane, Manhattan, NY<br>
+          📞 +1 (555) 123-4567<br>
+          📧 info@apexauto.com
+        </p>
+      </div>
+      <div class="footer-section">
+        <h4>Business Hours</h4>
+        <p style="color: var(--text-muted);">
+          Monday - Friday: 9 AM - 8 PM<br>
+          Saturday: 10 AM - 6 PM<br>
+          Sunday: Closed
+        </p>
+      </div>
+    </div>
+    <div class="footer-socials">
+        <a href="#" class="social-icon">f</a>
+        <a href="#" class="social-icon">𝕏</a>
+        <a href="#" class="social-icon">in</a>
+        <a href="#" class="social-icon">📷</a>
+      </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">
+        © 2024 Polanco Exotic Cars. All rights reserved. | Privacy Policy | Terms of Service
+      </div>
+      
+    </div>
+  </footer>
+
+
+  <!-- FOOTER
   <footer>
     <div class="container-section">
       <div class="footer-container">
@@ -239,7 +392,7 @@
         <p>&copy; 2019–2026 Eden Avenue Interiors. All rights reserved. | <a href="sitemap.xml">Sitemap</a></p>
       </div>
     </div>
-  </footer>
+  </footer> -->
 
   <!-- JSON-LD Structured Data: BreadcrumbList -->
   <script type="application/ld+json">
