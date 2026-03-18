@@ -12,7 +12,7 @@
  * @param {Array} items - Array of portfolio items
  * @param {String} containerId - Target container ID
  */
-function renderPortfolioCards(items, containerId) {
+function renderPortfolioCards(items, containerId, category = 'interiors') {
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -43,7 +43,7 @@ function renderPortfolioCards(items, containerId) {
         ${item.location ? `<p class="card-location">${item.location}</p>` : ''}
         <p class="card-desc">${item.description}</p>
         ${item.priceRange ? `<p class="card-price">${item.priceRange}</p>` : ''}
-        <a href="${generateWhatsAppLink(item.name)}" class="btn-teal btn-pill card-cta" aria-label="${item.cta || 'Book a Consultation'} for ${item.name}">${item.cta || 'Book a Consultation'}</a>
+        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta" aria-label="${item.cta || 'Book a Consultation'} for ${item.name}">${item.cta || 'Book a Consultation'}</a>
       </div>
     </div>
   `).join('');
@@ -54,7 +54,7 @@ function renderPortfolioCards(items, containerId) {
  * @param {Array} items - Array of product items
  * @param {String} containerId - Target container ID
  */
-function renderProductCards(items, containerId) {
+function renderProductCards(items, containerId, category = "drapes") {
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -83,7 +83,7 @@ function renderProductCards(items, containerId) {
         <h3 class="card-title">${item.name}</h3>
         <p class="card-desc">${item.description}</p>
         <p class="card-price">${item.priceRange}</p>
-        <a href="${generateWhatsAppLink(item.name)}" class="btn-teal btn-pill card-cta" aria-label="Book consultation for ${item.name}">Book a Consultation</a>
+        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta" aria-label="Book consultation for ${item.name}">Book a Consultation</a>
       </div>
     </div>
   `).join('');
@@ -95,10 +95,25 @@ function renderProductCards(items, containerId) {
  * @param {String} projectName - Name of the project/product
  * @returns {String} WhatsApp URL
  */
-function generateWhatsAppLink(projectName) {
-  const message = `I saw the ${projectName} on your website and I'd like to book a consultation for something similar.`;
-  const encodedMessage = encodeURIComponent(message);
-  return `https://wa.me/2348000000000?text=${encodedMessage}`;
+const WHATSAPP_NUMBERS = {
+  interiors: '2347047999787', // ← replace with actual numbers from client
+  homes: '2347047999787',
+  drapes: '2347047999787',
+  flooring: '2347047999787',
+};
+
+const WHATSAPP_MESSAGES = {
+  interiors: (name) => `Hi, I saw the *${name}* project on your website and I'd like to discuss something similar for my space.\n\nView it here: https://edenavenue.com/interiors.html`,
+  homes: (name) => `Hi, I'm interested in the *${name}* from your Homes collection. Please send me more details.\n\nView it here: https://edenavenue.com/homes.html`,
+  drapes: (name) => `Hi, I saw the *${name}* on your website and I'd like to get a quote for my windows.\n\nView it here: https://edenavenue.com/drapes.html`,
+  flooring: (name) => `Hi, I saw the *${name}* on your website and I'd like to get a quote for my space.\n\nView it here: https://edenavenue.com/flooring.html`,
+};
+
+function generateWhatsAppLink(projectName, category = 'interiors') {
+  const number = WHATSAPP_NUMBERS[category] || WHATSAPP_NUMBERS.interiors;
+  const messageFn = WHATSAPP_MESSAGES[category] || WHATSAPP_MESSAGES.interiors;
+  const message = messageFn(projectName);
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
 /* ========== MODAL - Click/Keyboard Activated ========== */
@@ -170,8 +185,8 @@ function openModal(card) {
   }
 
   // Update WhatsApp CTA button
-  if (cta) {
-    cta.href = generateWhatsAppLink(card.dataset.name);
+if (cta) {
+  cta.href = generateWhatsAppLink(card.dataset.name, card.dataset.category);
     cta.setAttribute('aria-label', `Book consultation via WhatsApp for ${card.dataset.name}`);
   }
 
@@ -427,16 +442,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const d = window.siteData;
 
   // HOMEPAGE: Render featured items previews
-  renderPortfolioCards(d.interiors.filter(i => i.featured).slice(0, 3), 'preview-interiors');
-  renderPortfolioCards(d.homes.filter(i => i.featured).slice(0, 3), 'preview-homes');
-  renderProductCards(d.drapes.filter(i => i.featured).slice(0, 3), 'preview-drapes');
-  renderProductCards(d.flooring.filter(i => i.featured).slice(0, 3), 'preview-flooring');
+  renderPortfolioCards(d.interiors.filter(i => i.featured).slice(0, 3), 'preview-interiors', 'interiors');
+  renderPortfolioCards(d.homes.filter(i => i.featured).slice(0, 3), 'preview-homes', 'homes');
+  renderProductCards(d.drapes.filter(i => i.featured).slice(0, 3), 'preview-drapes', 'drapes');
+  renderProductCards(d.flooring.filter(i => i.featured).slice(0, 3), 'preview-flooring', 'flooring');
 
   // FULL PAGES: Render all items
-  renderPortfolioCards(d.interiors, 'grid-interiors');
-  renderPortfolioCards(d.homes, 'grid-homes');
-  renderProductCards(d.drapes, 'grid-drapes');
-  renderProductCards(d.flooring, 'grid-flooring');
+  renderPortfolioCards(d.interiors, 'grid-interiors', 'interiors');
+  renderPortfolioCards(d.homes, 'grid-homes', 'homes');
+  renderProductCards(d.drapes, 'grid-drapes', 'drapes');
+  renderProductCards(d.flooring, 'grid-flooring', 'flooring');
 
   // Initialize interactive features
   initModal();
