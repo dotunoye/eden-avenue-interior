@@ -12,9 +12,43 @@
  * @param {Array} items - Array of portfolio items
  * @param {String} containerId - Target container ID
  */
+
+// 1. Sanity Configuration (Top-Level)
+const PROJECT_ID = 't4wq6q4h'; 
+const DATASET = 'production';
+const API_VERSION = 'v2021-10-21';
+
+// The query needs to match your nested schema: "alt": image.alt
+const QUERY = encodeURIComponent(`{
+  "interiors": *[_type == "interiors"]{name, location, description, priceRange, "image": image.asset->url, "alt": image.alt, featured},
+  "homes": *[_type == "homes"]{name, description, priceRange, "image": image.asset->url, "alt": image.alt, featured},
+  "flooring": *[_type == "flooring"]{name, description, priceRange, "image": image.asset->url, "alt": image.alt, featured},
+  "drapes": *[_type == "drapes"]{name, description, priceRange, "image": image.asset->url, "alt": image.alt, featured}
+}`);
+
+const SANITY_URL = `https://${PROJECT_ID}.apicdn.sanity.io/${API_VERSION}/data/query/${DATASET}?query=${QUERY}`;
+// 3. The Fetch Engine
+async function initSite() {
+  try {
+    const response = await fetch(SANITY_URL);
+    const { result } = await response.json();
+    
+    // This is the magic line. It overwrites your old static data with LIVE data.
+    window.siteData = result; 
+
+    // Now that data is loaded, run your existing init logic
+    setupApp(); 
+  } catch (error) {
+    console.error("Sanity connection failed. Check your Project ID or Network.", error);
+  }
+}
+
+// 4. Update your DOMContentLoaded
+document.addEventListener('DOMContentLoaded', initSite);
+
 function renderPortfolioCards(items, containerId, category = 'interiors') {
   const container = document.getElementById(containerId);
-  if (!container) return;
+  if (!container || !items) return;
 
   container.innerHTML = items.map(item => `
     <div class="card portfolio-card"
@@ -26,64 +60,37 @@ function renderPortfolioCards(items, containerId, category = 'interiors') {
          data-image="${item.image}"
          data-description="${item.description}"
          data-location="${item.location || ''}"
-         data-price="${item.priceRange || ''}"
-         data-desc="${item.description}">
+         data-price="${item.priceRange || ''}">
       <div class="card-img-wrap">
-        <img src="${item.image}"
-             alt="${item.name}${item.location ? ' - ' + item.location : ''}"
-             loading="lazy"
-             width="400"
-             height="300">
-        <div class="card-overlay">
-          <span class="card-overlay-text">View</span>
-        </div>
+        <img src="${item.image}" alt="${item.alt || item.name}" loading="lazy" width="400" height="300">
+        <div class="card-overlay"><span class="card-overlay-text">View</span></div>
       </div>
       <div class="card-body">
         <h3 class="card-title">${item.name}</h3>
         ${item.location ? `<p class="card-location">${item.location}</p>` : ''}
         <p class="card-desc">${item.description}</p>
         ${item.priceRange ? `<p class="card-price">${item.priceRange}</p>` : ''}
-        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta" aria-label="${item.cta || 'Book a Consultation'} for ${item.name}">${item.cta || 'Book a Consultation'}</a>
+        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta">Book a Consultation</a>
       </div>
     </div>
   `).join('');
 }
 
-/**
- * Render product cards (Drapes/Flooring)
- * @param {Array} items - Array of product items
- * @param {String} containerId - Target container ID
- */
 function renderProductCards(items, containerId, category = "drapes") {
   const container = document.getElementById(containerId);
-  if (!container) return;
+  if (!container || !items) return;
 
   container.innerHTML = items.map(item => `
-    <div class="card portfolio-card"
-         role="button"
-         tabindex="0"
-         aria-label="View ${item.name}"
-         data-modal="true"
-         data-name="${item.name}"
-         data-image="${item.image}"
-         data-description="${item.description}"
-         data-price="${item.priceRange}"
-         data-desc="${item.description}">
+    <div class="card portfolio-card" data-modal="true" data-name="${item.name}" data-image="${item.image}" data-description="${item.description}" data-price="${item.priceRange}">
       <div class="card-img-wrap">
-        <img src="${item.image}"
-             alt="${item.name}"
-             loading="lazy"
-             width="400"
-             height="300">
-        <div class="card-overlay">
-          <span class="card-overlay-text">View</span>
-        </div>
+        <img src="${item.image}" alt="${item.alt || item.name}" loading="lazy" width="400" height="300">
+        <div class="card-overlay"><span class="card-overlay-text">View</span></div>
       </div>
       <div class="card-body">
         <h3 class="card-title">${item.name}</h3>
         <p class="card-desc">${item.description}</p>
         <p class="card-price">${item.priceRange}</p>
-        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta" aria-label="Book consultation for ${item.name}">Book a Consultation</a>
+        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta">Book a Consultation</a>
       </div>
     </div>
   `).join('');
@@ -432,38 +439,46 @@ function initProcessScroll() {
 
 /* ========== PAGE INITIALIZATION ========== */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Check if data is available
-  if (!window.siteData) {
-    console.error('window.siteData not loaded. Ensure data.js is included before main.js');
-    return;
-  }
-
-  const d = window.siteData;
-
-  // HOMEPAGE: Render featured items previews
-  renderPortfolioCards(d.interiors.filter(i => i.featured).slice(0, 3), 'preview-interiors', 'interiors');
-  renderPortfolioCards(d.homes.filter(i => i.featured).slice(0, 3), 'preview-homes', 'homes');
-  renderProductCards(d.drapes.filter(i => i.featured).slice(0, 3), 'preview-drapes', 'drapes');
-  renderProductCards(d.flooring.filter(i => i.featured).slice(0, 3), 'preview-flooring', 'flooring');
-
-  // FULL PAGES: Render all items
-  renderPortfolioCards(d.interiors, 'grid-interiors', 'interiors');
-  renderPortfolioCards(d.homes, 'grid-homes', 'homes');
-  renderProductCards(d.drapes, 'grid-drapes', 'drapes');
-  renderProductCards(d.flooring, 'grid-flooring', 'flooring');
-
-  // Initialize interactive features
-  initModal();
+async function initEdenAvenue() {
+  // Init nav and UI immediately — doesn't need data
   initNavigation();
   initTypewriter();
   initScrollAnimations();
   initProcessScroll();
-});
+
+   const gridIds = ['grid-interiors', 'grid-homes', 'grid-drapes', 'grid-flooring'];
+  gridIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '<div class="grid-loading">Loading...</div>';
+  });
+  
+  try {
+    const response = await fetch(SANITY_URL);
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+    const { result } = await response.json();
+    window.siteData = result;
+
+    const d = window.siteData;
+
+    // FULL PAGES
+    renderPortfolioCards(d.interiors || [], 'grid-interiors', 'interiors');
+    renderPortfolioCards(d.homes || [], 'grid-homes', 'homes');
+    renderProductCards(d.drapes || [], 'grid-drapes', 'drapes');
+    renderProductCards(d.flooring || [], 'grid-flooring', 'flooring');
+
+    // Init modal after cards are rendered
+    initModal();
+
+    console.log('✅ Sanity data loaded successfully');
+
+  } catch (error) {
+    console.error('❌ Failed to load Sanity data:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initEdenAvenue);
 
 /* ========== ERROR HANDLING ========== */
-
-/** Handle missing/broken images gracefully by hiding them */
 document.addEventListener('error', (e) => {
   if (e.target.tagName === 'IMG') {
     e.target.style.display = 'none';
@@ -471,72 +486,10 @@ document.addEventListener('error', (e) => {
   }
 }, true);
 
-function renderPortfolioGrid(containerId, items) {
-  const container = document.getElementById(containerId);
-  if (!container || !items) return;
+/* ========== MODAL CLOSE TRIGGERS ========== */
+document.getElementById('modal-close')?.addEventListener('click', closeModal);
+document.getElementById('modal-overlay')?.addEventListener('click', closeModal);
 
-  container.innerHTML = items.map(item => `
-    <div class="portfolio-card" 
-         data-id="${item.id}"
-         data-name="${item.name || ''}"
-         data-image="${item.image}"
-         data-location="${item.location || ''}"
-         data-desc="${item.description || ''}"
-         data-price="${item.priceRange || ''}"
-         tabindex="0"
-         role="button"
-         aria-label="View ${item.name || 'project'} details">
-      <div class="portfolio-card__image">
-        <img src="${item.image}" alt="${item.name || 'Eden Avenue project'}" loading="lazy">
-      </div>
-      <div class="portfolio-card__info">
-        <div class="portfolio-card__meta">
-          ${item.name ? `<h3 class="portfolio-card__name">${item.name}</h3>` : ''}
-          ${item.location ? `<span class="portfolio-card__location">${item.location}</span>` : ''}
-        </div>
-        <a class="portfolio-card__cta">Book a Session</a>
-      </div>
-    </div>
-  `).join('');
-
-  // Attach click events
-  container.querySelectorAll('.portfolio-card').forEach(card => {
-    card.addEventListener('click', () => openPortfolioModal(card.dataset));
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter') openPortfolioModal(card.dataset);
-    });
-  });
-}
-
-function openPortfolioModal(data) {
-  document.getElementById('modal-image').src = data.image;
-  document.getElementById('modal-image').alt = data.name || 'Project image';
-  document.getElementById('modal-name').textContent = data.name || '';
-  document.getElementById('modal-location').textContent = data.location || '';
-  document.getElementById('modal-desc').textContent = data.desc || '';
-  document.getElementById('modal-price').textContent = data.price || '';
-
-  const modal = document.getElementById('portfolio-modal');
-  modal.classList.add('active');
-  document.body.classList.add('menu-open');
-}
-
-function closePortfolioModal() {
-  const modal = document.getElementById('portfolio-modal');
-  modal.classList.remove('active');
-  document.body.classList.remove('menu-open');
-}
-
-// Close triggers
-document.getElementById('modal-close')?.addEventListener('click', closePortfolioModal);
-document.getElementById('modal-overlay')?.addEventListener('click', closePortfolioModal);
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closePortfolioModal();
-});
-
-// Init
-if (document.getElementById('grid-interiors')) {
-  renderPortfolioGrid('grid-interiors', window.siteData.interiors);
-}
+/* End of main.js */
 
 /* End of main.js */

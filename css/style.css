@@ -632,7 +632,7 @@ button.btn-pill {
   position: relative;
   overflow: hidden;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1/1;
 }
 
 .card-img-wrap img {
@@ -676,7 +676,7 @@ button.btn-pill {
 
 .card-title {
   font-family: var(--font-serif);
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 400;
   color: var(--color-black);
   margin-bottom: var(--spacing-sm);
@@ -685,9 +685,9 @@ button.btn-pill {
 .card-location,
 .card-price {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-grey);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
 }
 
 .card-price {
@@ -701,7 +701,7 @@ button.btn-pill {
   color: var(--color-grey);
   line-height: 1.6;
   flex-grow: 1;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
 }
 
 .card-cta {
@@ -3990,4 +3990,15 @@ textarea:focus {
   object-position: top;
 }
 
+.grid-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 24px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-grey);
+}
 /* End of stylesheet */
