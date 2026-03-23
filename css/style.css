@@ -3382,7 +3382,7 @@ textarea:focus {
 }
 
 /* ══ TEAM ══ */
-.about-team {
+/* .about-team {
   padding: 120px 24px;
   max-width: 1200px;
   margin: 0 auto;
@@ -3465,6 +3465,155 @@ textarea:focus {
   font-weight: 300;
   color: #8C92AC;
   line-height: 1.8;
+} */
+
+/* ══ TEAM SECTION (Responsive + Native Swipe) ══ */
+.about-team {
+  padding: clamp(80px, 10vw, 120px) 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-team__header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+
+.about-team__header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
+  color: #1A1A1A;
+  margin-bottom: 16px;
+}
+
+.about-team__header h2 em {
+  font-style: italic;
+  color: #008080;
+}
+
+.about-team__header p {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 300;
+  color: #8C92AC;
+  line-height: 1.9;
+}
+
+/* ── DESKTOP GRID ── */
+.team-carousel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* ── TEAM CARD STYLING ── */
+.team-card {
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  border-radius: 12px; /* Softened edges for luxury feel */
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.team-card__image {
+  width: 100%;
+  aspect-ratio: 4/3; /* Perfect portrait ratio */
+  overflow: hidden;
+}
+
+.team-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s ease;
+}
+
+/* Subtle image zoom on card hover */
+.team-card:hover .team-card__image img {
+  transform: scale(1.05);
+}
+
+.team-card__info {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.team-card__role {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #008080;
+  margin-bottom: 8px;
+}
+
+.team-card__info h3 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: #1A1A1A;
+  margin-bottom: 12px;
+}
+
+.team-card__info p {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: #8C92AC;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ── TABLET RESPONSIVENESS (Show 2 Cards + Swipe) ── */
+@media (max-width: 1024px) {
+  .team-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 24px;
+    padding-bottom: 32px; /* Room for shadow to not get cut off */
+    
+    /* Hide ugly scrollbars */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+  }
+  
+  .team-carousel::-webkit-scrollbar { 
+    display: none; 
+  }
+
+  .team-card {
+    min-width: calc(50% - 12px);
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}
+
+/* ── MOBILE RESPONSIVENESS (Show 1 Card + Peeping Next) ── */
+@media (max-width: 767px) {
+  .team-carousel {
+    padding: 0 5% 32px 5%; /* Adds offset so the next card peeps */
+    gap: 16px;
+  }
+
+  .team-card {
+    max-width: 85vw; /* Forces card to 85% of screen, leaving 15% for peeping */
+    scroll-snap-align: center; /* Snaps to the center of the screen */
+  }
 }
 
 /* ══ PROCESS SIMPLIFIED ══ */
