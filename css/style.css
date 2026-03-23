@@ -1350,7 +1350,7 @@ section.hero-off-white {
 
 /* 12. TESTIMONIALS */
 
-.testimonials-section {
+/* .testimonials-section {
   background: var(--color-off-white);
 }
 
@@ -1363,7 +1363,7 @@ section.hero-off-white {
 .testimonial-card {
   background: var(--color-white);
   padding: var(--spacing-lg);
-  border-left: 4px solid var(--color-blush);  /* Blush pink accent border */
+  border-left: 4px solid var(--color-blush);  /* Blush pink accent border 
   box-shadow: var(--shadow-sm);
 }
 
@@ -1387,7 +1387,138 @@ section.hero-off-white {
   font-family: var(--font-sans);
   font-size: 13px;
   color: var(--color-grey);
+} */
+
+/* ===========================
+   TESTIMONIALS - FIXED Scroll Snap (Horizontal)
+   =========================== */
+
+.testimonials-container {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: clamp(1rem, 1.5vw, 1.5rem) 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
+
+.testimonials-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.testimonials-container::-webkit-scrollbar-track {
+  background: #0f53ba1f;
+  border-radius: 10px;
+}
+
+.testimonials-container::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+.testimonial-card {
+  flex: 0 0 calc(100% - 1rem);
+  scroll-snap-align: start;
+  background: var(--color-off-white);
+  border: var(--color-teal);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 2vw, 2rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+@media (min-width: 768px) {
+  .testimonial-card {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc(33.333% - 1rem);
+  }
+}
+
+.testimonial-card:hover {
+  border-color: #0f53ba57;
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+}
+
+.testimonial-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  color: #1A1A1A;
+}
+
+.testimonial-text {
+  margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.6;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.testimonial-role {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: clamp(0.75rem, 1vw, 1rem);
+}
+
+.testimonial-rating {
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+.grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.section-title {
+    text-align: center;
+    margin-bottom: clamp(2rem, 4vw, 4rem);
+    align-self: center;
+}
+.section-title p {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+@media (max-width: 768px) {
+  .grid-cols-3 {
+        display: flex;
+        grid-template-columns: unset !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 
 /* 13. CTA BANNER - Call-to-action with teal gradient background */
 /* Features: gradient background, decorative circles, responsive padding */
@@ -3300,7 +3431,7 @@ textarea:focus {
 .team-card__image img {
   width: 100%;
   height: 100%;
-  aspect-ratio: 4/4;
+  aspect-ratio: 4/3;
   object-fit: cover;
   display: block;
 }
@@ -3483,7 +3614,7 @@ textarea:focus {
   line-height: 1.8;
 }
 
-/* ══ TESTIMONIALS ══ */
+/* ══ TESTIMONIALS ══
 .about-testimonials {
   padding: 120px 24px;
   max-width: 1200px;
@@ -3549,7 +3680,7 @@ textarea:focus {
   font-weight: 300;
   color: #8C92AC;
   letter-spacing: 1px;
-}
+} */
 
 /* ══ RESPONSIVE ══ */
 @media (max-width: 1023px) {
@@ -3992,6 +4123,312 @@ textarea:focus {
 .portfolio-grid--top .portfolio-modal__image img{
   aspect-ratio: 1/1;
   object-position: top;
+}
+
+/* ================================================
+   EDEN AVENUE - ABOUT PAGE (PREMIUM MODULES)
+   ================================================ */
+
+/* 1. OUR VALUES — THE STICKY STACK ENGINE */
+.values-scroll-container {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  position: relative;
+  /* Ensure parent doesn't hide overflow, otherwise sticky breaks */
+  overflow: visible; 
+}
+.values-header{
+  text-align: center;
+  position: sticky;
+  position: sticky;
+  top: 90px; /* Sits perfectly below your floating pill nav */
+  z-index: 30; /* Forces it to stay above all the sliding cards */
+  padding: 48px 24px 60px 24px;
+}
+.values-inner {
+  position: relative;
+}
+
+.values-panel {
+  position: sticky;
+  top: 0;
+  height: 100dvh; /* Dynamic Viewport Height prevents mobile jump glitch */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  background-color: var(--color-black); /* Overwrites the previous card */
+  /* Deep shadow to create depth when the next card slides over */
+  box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.6); 
+  overflow: hidden;
+}
+
+/* The Glass Card Flair */
+.values-panel__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid rgb(255, 255, 255); /* Razor-thin luxury border */
+  border-radius: 16px;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 8vw, 60px);
+  text-align: center;
+}
+
+/* Background Watermark Text */
+.values-panel__bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-serif);
+  font-size: clamp(100px, 20vw, 300px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.values-panel__number {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(40px, 6vw, 60px);
+  color: var(--color-teal);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.values-panel__title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--color-white);
+  margin-bottom: 16px;
+}
+
+.values-panel__description {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 2vw, 16px);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* 2. TEAM & TESTIMONIALS — NATIVE HORIZONTAL SCROLL */
+.testimonial-quote {
+  background: var(--color-white);
+  padding: clamp(30px, 5vw, 40px);
+  border-radius: 12px;
+  border-left: 4px solid var(--color-teal);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.team-carousel,
+.testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* Hide your manual slider controls, we are using native swipe */
+.testimonials-controls {
+  display: none; 
+}
+
+@media (max-width: 1024px) {
+  /* Tablet: Show 2, enable swipe */
+  .team-carousel,
+  .testimonials-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 24px;
+    padding-bottom: 24px; /* Room for shadow/scrollbar */
+    scrollbar-width: none; /* Firefox */
+  }
+  .team-carousel::-webkit-scrollbar,
+  .testimonials-container::-webkit-scrollbar { 
+    display: none; /* Chrome/Safari */
+  }
+  
+  .team-card,
+  .testimonial-quote {
+    min-width: calc(50% - 12px);
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile: Peeping effect */
+  .team-carousel,
+  .testimonials-container {
+    padding: 0 5%; /* Offset to allow peeping */
+  }
+  .team-card,
+  .testimonial-quote {
+    min-width: 85%; /* Leaves 15% of screen for next card */
+    scroll-snap-align: center;
+  }
+}
+
+/* 3. HOW WE WORK — ARCHITECTURAL TIMELINE */
+.roadmap-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.roadmap-svg { 
+  display: none; /* Kill the hardcoded SVG */
+}
+
+/* The Blueprint Center Line */
+.roadmap-stops::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(0, 128, 128, 0.3);
+  transform: translateX(-50%);
+}
+
+.roadmap-stop {
+  position: relative;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  width: 50%;
+  margin-bottom: 60px;
+}
+
+.roadmap-stop:nth-child(even) {
+  align-self: flex-end;
+  margin-left: auto;
+  justify-content: flex-start;
+}
+
+.roadmap-stop__circle {
+  position: absolute;
+  right: -6px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-teal);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(0, 128, 128, 0.15);
+  z-index: 2;
+}
+
+.roadmap-stop:nth-child(even) .roadmap-stop__circle {
+  left: -6px;
+  right: auto;
+}
+
+.roadmap-label {
+  width: 85%;
+  padding: 0 40px;
+}
+
+/* Timeline Mobile Override */
+@media (max-width: 767px) {
+  .roadmap-stops::before { left: 20px; }
+  .roadmap-stop {
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+  }
+  .roadmap-stop:nth-child(even) { margin-left: 0; }
+  .roadmap-stop__circle { left: 14px !important; }
+  .roadmap-label {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 0;
+  }
+}
+
+/* 4. AWARDS / STATS — SHARP GLASSMORPHISM */
+.awards-section {
+  /* Subtle dark architectural background to make the glass pop */
+  background-image: url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax feel */
+  position: relative;
+}
+
+.awards-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.90); /* Heavy dark overlay */
+  z-index: 1;
+}
+
+.about-awards__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.awards-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.award-milestone {
+  /* The Glass Engine */
+  background: rgba(195, 195, 195, 0.257);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-teal);
+  border-radius: 8px;
+  padding: 40px 32px;
+  transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+}
+
+.award-milestone:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 128, 128, 0.4); /* Subtle teal glow on hover */
+}
+
+.award-year {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 48px;
+  color: var(--color-black);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.award-title {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-teal);
+  margin-bottom: 12px;
+}
+
+.award-desc {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-black);
+  line-height: 1.8;
+}
+
+@media (max-width: 1024px) {
+  .awards-timeline { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .awards-timeline { grid-template-columns: 1fr; }
 }
 
 .grid-loading {

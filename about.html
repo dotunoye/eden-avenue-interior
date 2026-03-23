@@ -118,13 +118,13 @@
         <!-- ══ VALUES - HORIZONTAL SCROLL (Desktop) / VERTICAL STACK (Mobile) ══ -->
     <div class="values-scroll-container" style="clip-path: inset(0);">
       <div class="values-sticky">
-        <div class="values-header">
-          <span class="section-eyebrow" style="color: rgba(255,255,255,0.5);">What Drives Us</span>
-          <h2>Our <em>Values</em></h2>
+        <div class="values-header" style="text-align: center;">
+          <span class="section-eyebrow">What Drives Us</span>
+          <h2 style="color: white;">Our <em>Values</em></h2>
         </div>
         <div class="values-inner">
           <!-- Value 1: Detail Obsessed -->
-          <div class="values-panel">
+          <div class="values-panel" style="box-shadow: none;">
             <div class="values-panel__bg-text">Detail</div>
             <div class="values-panel__content">
               <div class="values-panel__number">01</div>
@@ -286,7 +286,7 @@
           <div class="about-awards__inner">
             <div class="about-awards__header anim anim--fade-up">
               <span class="section-eyebrow" style="color: rgba(255,255,255,0.6);">Recognition</span>
-              <h2 style="color: white;">Awards & <em style="color: #008080;">Recognition</em></h2>
+              <h2 style="color: black;">Awards & <em style="color: #008080;">Recognition</em></h2>
             </div>
             
             <div class="awards-timeline" id="awards-timeline">
@@ -319,46 +319,44 @@
       </div>
     </div>
 
-    <!-- ══ TESTIMONIALS ══ -->
-    <div class="section-wrap" style="background: #F5F5F5;">
-      <section class="about-testimonials">
-        <div class="about-testimonials__inner">
-          <div class="about-testimonials__header anim anim--fade-up">
-            <span class="section-eyebrow">Client Stories</span>
-            <h2>What Our Clients <em>Say</em></h2>
-          </div>
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" style="background: var(--bg-card);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Client Testimonials</h2>
+        <p>Hear from our satisfied customers about their Polanco Exotic Cars experience.</p>
+      </div>
+      <div class="grid grid-cols-3">
+        <article class="testimonial-card">
           
-          <div class="testimonials-container" id="testimonials-slider">
-            <div class="testimonial-quote">
-              <div class="testimonial-quote__mark">"</div>
-              <p class="testimonial-quote__text">Eden Avenue transformed our home into something beyond what we imagined. Every detail was perfect — from the furniture to the finishing touches. Truly exceptional work.</p>
-              <div class="testimonial-quote__divider"></div>
-              <div class="testimonial-quote__author">
-                <p class="testimonial-quote__name">Mrs. Adeyemi</p>
-                <p class="testimonial-quote__location">Homeowner, Victoria Island</p>
-              </div>
-            </div>
-            
-            <div class="testimonial-quote">
-              <div class="testimonial-quote__mark">"</div>
-              <p class="testimonial-quote__text">Professional, creative and always within budget. They understood our vision from day one and delivered a commercial space that wows everyone who walks in.</p>
-              <div class="testimonial-quote__divider"></div>
-              <div class="testimonial-quote__author">
-                <p class="testimonial-quote__name">Mr. Okafor</p>
-                <p class="testimonial-quote__location">Business Owner, Lekki</p>
-              </div>
-            </div>
-            
-            <div class="testimonial-quote">
-              <div class="testimonial-quote__mark">"</div>
-              <p class="testimonial-quote__text">The drapes they recommended completely changed the feel of our living room. The quality is outstanding and the installation was seamless. Highly recommend.</p>
-              <div class="testimonial-quote__divider"></div>
-              <div class="testimonial-quote__author">
-                <p class="testimonial-quote__name">Mrs. Babatunde</p>
-                <p class="testimonial-quote__location">Homeowner, Ikoyi</p>
-              </div>
-            </div>
+          <div class="testimonial-text">
+            "Polanco Exotic Cars provided exceptional service. The team's expertise and dedication made my purchase experience unforgettable."
           </div>
+          <div class="testimonial-author">John Patterson</div>
+          <div class="testimonial-role">Mercedes S-Class Owner</div>
+          
+        </article>
+        <article class="testimonial-card">
+          
+          <div class="testimonial-text">
+            "I was impressed by the extensive inventory and the professionalism of every staff member. Highly recommended!"
+          </div>
+          <div class="testimonial-author">Sarah Williams</div>
+          <div class="testimonial-role">Porsche 911 Owner</div>
+          
+        </article>
+        <article class="testimonial-card">
+          
+          <div class="testimonial-text">
+            "The after-sales support is outstanding. They truly care about customer satisfaction beyond the purchase."
+          </div>
+          <div class="testimonial-author">Michael Chen</div>
+          <div class="testimonial-role">Tesla Model S Owner</div>
+          
+        </article>
+      </div>
+    </div>
+  </section>
           
           <!-- Mobile navigation controls (hidden on desktop) -->
           <div class="testimonials-controls">
