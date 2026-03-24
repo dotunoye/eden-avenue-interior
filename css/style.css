@@ -4364,6 +4364,68 @@ textarea:focus {
   margin: 0 auto;
 }
 
+/* ══ THE PRO PIVOT: MOBILE VALUES SWIPE ══ */
+@media (max-width: 767px) {
+  /* 1. Un-stick the header so it scrolls normally */
+  .values-header {
+    position: relative !important;
+    top: auto !important;
+    padding: 60px 24px 40px !important;
+    background: var(--color-black) !important;
+    z-index: 1 !important;
+  }
+
+  /* 2. Turn the container into a native swipe track */
+  .values-inner {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    padding: 0 5% 60px 5% !important; /* Peeping effect offset */
+    height: auto !important;
+    min-height: auto !important;
+    margin-top: 0 !important;
+    
+    /* Hide ugly scrollbars */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .values-inner::-webkit-scrollbar { 
+    display: none; 
+  }
+
+  /* 3. Strip the sticky physics and build mobile cards */
+  .values-panel {
+    position: relative !important; /* Kills the sticky bug */
+    top: auto !important;
+    height: auto !important;
+    min-height: 420px !important; /* Gives the card a solid, premium height */
+    min-width: 85vw !important; /* Leaves 15% of the screen for the next card */
+    scroll-snap-align: center !important;
+    padding: 32px 24px !important;
+    border-radius: 12px !important; /* Softens the edges */
+    box-shadow: none !important;
+    
+    /* Center content vertically inside the new card */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  /* 4. Resize the watermark text so it fits the smaller card */
+  .values-panel__bg-text {
+    font-size: 80px !important;
+  }
+  
+  /* 5. Ensure the inner content box fills the new card */
+  .values-panel__content {
+    padding: 32px 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+
 /* 2. TEAM & TESTIMONIALS — NATIVE HORIZONTAL SCROLL */
 .testimonial-quote {
   background: var(--color-white);
@@ -4532,7 +4594,7 @@ textarea:focus {
 
 .award-milestone {
   /* The Glass Engine */
-  background: rgba(195, 195, 195, 0.257);
+  background: rgba(195, 195, 195, 0.096);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--color-teal);
