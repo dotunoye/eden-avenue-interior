@@ -46,7 +46,8 @@ async function initSite() {
 // 4. Update your DOMContentLoaded
 document.addEventListener('DOMContentLoaded', initSite);
 
-function renderPortfolioCards(items, containerId, category = 'interiors') {
+// Added 'ctaText' parameter with a default fallback
+function renderPortfolioCards(items, containerId, category = 'interiors', ctaText = 'Book a Consultation') {
   const container = document.getElementById(containerId);
   if (!container || !items) return;
 
@@ -70,13 +71,15 @@ function renderPortfolioCards(items, containerId, category = 'interiors') {
         ${item.location ? `<p class="card-location">${item.location}</p>` : ''}
         <p class="card-desc">${item.description}</p>
         ${item.priceRange ? `<p class="card-price">${item.priceRange}</p>` : ''}
-        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta">Book a Consultation</a>
+        
+        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta">${ctaText}</a>
       </div>
     </div>
   `).join('');
 }
 
-function renderProductCards(items, containerId, category = "drapes") {
+// Added 'ctaText' parameter with a default fallback
+function renderProductCards(items, containerId, category = "drapes", ctaText = 'Book a Consultation') {
   const container = document.getElementById(containerId);
   if (!container || !items) return;
 
@@ -90,7 +93,8 @@ function renderProductCards(items, containerId, category = "drapes") {
         <h3 class="card-title">${item.name}</h3>
         <p class="card-desc">${item.description}</p>
         <p class="card-price">${item.priceRange}</p>
-        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta">Book a Consultation</a>
+        
+        <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill card-cta">${ctaText}</a>
       </div>
     </div>
   `).join('');
@@ -461,10 +465,10 @@ async function initEdenAvenue() {
     const d = window.siteData;
 
     // FULL PAGES
-    renderPortfolioCards(d.interiors || [], 'grid-interiors', 'interiors');
-    renderPortfolioCards(d.homes || [], 'grid-homes', 'homes');
-    renderProductCards(d.drapes || [], 'grid-drapes', 'drapes');
-    renderProductCards(d.flooring || [], 'grid-flooring', 'flooring');
+    renderPortfolioCards(d.interiors || [], 'grid-interiors', 'interiors', "Book a Session");
+    renderPortfolioCards(d.homes || [], 'grid-homes', 'homes', "Place an Order");
+    renderProductCards(d.drapes || [], 'grid-drapes', 'drapes', "Get your Drape");
+    renderProductCards(d.flooring || [], 'grid-flooring', 'flooring', "Get a Quote");
 
     // Init modal after cards are rendered
     initModal();
