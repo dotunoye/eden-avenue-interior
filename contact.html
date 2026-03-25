@@ -100,24 +100,26 @@
           
           <article class="contact-card">
             <h3>
-              <span style="font-size: 1.5rem;">📞</span>
               Phone
             </h3>
             <p>
-              <strong>Manhattan:</strong><br>
-              <a href="tel:+15551234567">+1 (555) 123-4567</a>
+              <strong>Interiors:</strong><br>
+              <a href="tel:+2348143784615">+234 814 3784 615</a>
             </p>
             <p>
-              <strong>Los Angeles:</strong><br>
-              <a href="tel:+15552345678" >+1 (555) 234-5678</a>
+              <strong>Others:</strong><br>
+              <a href="tel:+2347048549662" >+234 704 854 9662</a>
             </p>
+            <h3>
+              Email
+            </h3>
             <p>
-              <strong>Miami Beach:</strong><br>
-              <a href="tel:+15553456789" >+1 (555) 345-6789</a>
+              <strong>General Inquiries:</strong><br>
+              <a href="mailto:info@edenavenueinteriors.com">info@edenavenueinteriors.com</a>
             </p>
           </article>
 
-          <article class="contact-card">
+          <!-- <article class="contact-card">
             <h3>
               <span style="font-size: 1.5rem;">📧</span>
               Email
@@ -134,17 +136,18 @@
               <strong>Service:</strong><br>
               <a href="mailto:service@apexauto.com" >service@apexauto.com</a>
             </p>
-          </article>
+          </article> -->
 
           <article class="contact-card">
             <h3>
               <span style="font-size: 1.5rem;">📍</span>
               Locations
             </h3>
-            <p>
-              <strong>Manhattan Flagship</strong><br>
-              123 Luxury Lane<br>
-              New York, NY 10022<br><br>
+            <p style="line-height: 32px;">
+              <strong>Lagos Flagship</strong><br>
+              3 Alh. Adekunle Bisi St,<br>
+               Ogudu, Lagos, Nigeria<br>
+
               <strong>Hours:</strong> Mon-Fri 9 AM - 8 PM | Sat 10 AM - 6 PM | Sun Closed
             </p>
             <p>
@@ -154,41 +157,48 @@
         </div>
 
         <!-- CONTACT FORM -->
-        <div>
-          <h2 style="margin-bottom: var(--spacing-md);">Send Us a Message</h2>
-          <form id="contactForm" class="contact-card">
-            <div class="form-group">
-              <label for="fullName">Full Name</label>
-              <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
-            </div>
+    <div>
+      <h2 style="margin-bottom: var(--spacing-md);">Send Us a Message</h2>
+      
+      <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="contact-card">
+        
+        <input type="hidden" name="access_key" value="bf71c01f-629d-4224-9cdf-440b023cda7a">
+        
+        <input type="hidden" name="subject" value="New Website Lead - Eden Avenue Interiors">
 
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required placeholder="john@example.com">
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
-            </div>
-            <div class="form-group">
-              <label for="vehicle">Interested In (Optional)</label>
-              <input type="text" id="vehicle" name="vehicle" placeholder="e.g., Mercedes S-Class, BMW M5">
-            </div>
-
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" required placeholder="Tell us how we can help..."></textarea>
-            </div>
-
-            <button type="submit" class="contact-btn-primary">
-              Send Message
-            </button>
-          </form>
-
-          
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="Name" required placeholder="e.g., Jane Doe">
         </div>
-      </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="Email" required placeholder="jane@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="Phone" placeholder="+234 800 000 0000">
+        </div>
+        
+        <div class="form-group">
+          <label for="projectType">Project Type (Optional)</label>
+          <input type="text" id="projectType" name="Project_Type" placeholder="e.g., Living Room Makeover, Full Home Design">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="Message" required placeholder="Tell us about your space and vision..."></textarea>
+        </div>
+
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <button type="submit" class="contact-btn-primary">
+          Send Message
+        </button>
+      </form>
+    </div>
+</div>
     </div>
   </section>
 

@@ -1531,7 +1531,7 @@ section.hero-off-white {
 /* Features: gradient background, decorative circles, responsive padding */
 
 .cta-banner {
-  padding: 80px 24px;
+  padding: 80px 24px 0px 24px;
   background: #F5F5F5;  /* Light background for contrast */
 }
 
@@ -1660,7 +1660,6 @@ section.hero-off-white {
 
 footer {
   background: var(--color-off-white);
-  border-top: 1px solid var(--color-teal);
   padding: clamp(3rem, 2vw, 4rem) clamp(1rem, 2vw, 2rem);
   color: rgb(0, 0, 0);
 }
@@ -1673,6 +1672,8 @@ footer {
   gap: clamp(3rem, 3vw, 3rem);
   margin-bottom: clamp(1rem, 1vw, 3rem);
   justify-content: center;
+  border-top: 1px solid var(--color-teal);
+  padding: clamp(3rem, 2vw, 4rem) clamp(1rem, 2vw, 2rem);
 }
 
 .footer-section h4 {
@@ -2573,9 +2574,9 @@ section {
   margin-bottom: var(--spacing-lg);
 } */
  
-.contact-card:last-of-type {
+/* .contact-card:last-of-type {
   margin-bottom: 0;
-}
+} */
  
 .contact-card:hover {
   border-color: #0f53ba57;
