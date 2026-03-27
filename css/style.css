@@ -91,7 +91,8 @@
 
 html {
   scroll-behavior: smooth;
- 
+  width: 100%;
+  position: relative;
 }
 
 body {
@@ -100,7 +101,8 @@ body {
   line-height: 1.8;
   color: var(--color-black);
   background-color: var(--color-white);
-
+  width: 100%;
+  position: relative;
 }
 
 @media (max-width: 767px) {
@@ -190,6 +192,12 @@ section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover; /* Keeps your luxury images looking sharp */
 }
 
 /* 5. FLOATING PILL NAVIGATION */
@@ -844,6 +852,8 @@ section.hero-off-white {
   background: #FFFFFF;
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
+  width: 100%;
 }
 .backstory {
   padding: 120px 24px;
@@ -1608,7 +1618,7 @@ section.hero-off-white {
 
 .cta-banner__btn {
   display: inline-block;
-  padding: 14px 36px;
+  padding: 16px 24px;
   border-radius: 50px;
   font-family: var(--font-sans);
   font-size: 11px;
@@ -1617,6 +1627,7 @@ section.hero-off-white {
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.3s ease;
+  min-width: 250px;
 }
 
 .cta-banner__btn--solid {
@@ -3232,6 +3243,8 @@ textarea:focus {
   padding: 120px 24px;
   max-width: 1200px;
   margin: 0 auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .about-story__inner {
@@ -3285,7 +3298,7 @@ textarea:focus {
   font-weight: 400;
   color: #1A1A1A;
   line-height: 1.3;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .about-story__text h2 em {
@@ -4495,6 +4508,8 @@ textarea:focus {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px 0;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .roadmap-svg { 
@@ -4656,4 +4671,5 @@ textarea:focus {
   text-transform: uppercase;
   color: var(--color-grey);
 }
+
 /* End of stylesheet */
