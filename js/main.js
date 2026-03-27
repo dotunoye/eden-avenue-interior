@@ -107,10 +107,10 @@ function renderProductCards(items, containerId, category = "drapes", ctaText = '
  * @returns {String} WhatsApp URL
  */
 const WHATSAPP_NUMBERS = {
-  interiors: '2347047999787', // ← replace with actual numbers from client
-  homes: '2347047999787',
-  drapes: '2347047999787',
-  flooring: '2347047999787',
+  interiors: '2348143784615',
+  homes: '2347048549662',
+  drapes: '2347048549662',
+  flooring: '2347048549662',
 };
 
 const WHATSAPP_MESSAGES = {
