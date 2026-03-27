@@ -1292,7 +1292,7 @@ section.hero-off-white {
 @media (max-width: 1023px) {
   .bento-grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;git add
+    grid-template-rows: auto;
   }
 
   .bento-large {
