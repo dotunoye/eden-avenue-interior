@@ -490,6 +490,28 @@ document.addEventListener('error', (e) => {
   }
 }, true);
 
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Get the current URL path (e.g., '/about' or '/')
+  const currentPath = window.location.pathname;
+
+  // 2. Select every link in both your desktop and mobile navs
+  const allNavLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
+
+  allNavLinks.forEach(link => {
+    // 3. Rip the active class off every link to clear any hardcoded copy-paste mistakes
+    link.classList.remove('active');
+
+    // 4. Get where the link is trying to go
+    const linkHref = link.getAttribute('href');
+
+    // 5. The Logic: If the URL matches the link, give it the teal underline
+    // We also include a fallback in case the root '/' matches '/index'
+    if (currentPath === linkHref || (currentPath === '/' && (linkHref === '/' || linkHref === '/index'))) {
+      link.classList.add('active');
+    }
+  });
+});
+
 /* ========== MODAL CLOSE TRIGGERS ========== */
 document.getElementById('modal-close')?.addEventListener('click', closeModal);
 document.getElementById('modal-overlay')?.addEventListener('click', closeModal);
