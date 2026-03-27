@@ -91,8 +91,8 @@
 
 html {
   scroll-behavior: smooth;
-  /* width: 100%;
-  position: relative; */
+  width: 100%;
+  position: relative;
 }
 
 body {
@@ -101,8 +101,8 @@ body {
   line-height: 1.8;
   color: var(--color-black);
   background-color: var(--color-white);
-  /* width: 100%;
-  position: relative; */
+  width: 100%;
+  position: relative;
 }
 
 @media (max-width: 767px) {
@@ -194,11 +194,11 @@ section {
   padding: 0 var(--spacing-md);
 }
 
-/* img {
+img {
   max-width: 100%;
   height: auto;
-  object-fit: cover; /* Keeps your luxury images looking sharp 
-} */
+  object-fit: cover; /* Keeps your luxury images looking sharp */
+}
 
 /* 5. FLOATING PILL NAVIGATION */
 
@@ -852,7 +852,6 @@ section.hero-off-white {
   background: #FFFFFF;
   position: relative;
   z-index: 1;
-  width: 100%;
 }
 .backstory {
   padding: 120px 24px;
@@ -948,7 +947,6 @@ section.hero-off-white {
 /* ══ WHAT WE DO ══ */
 .what-we-do {
   background: #F5F5F5;
-  padding: 60px 0;
 }
 
 .wwd__header {
@@ -1177,7 +1175,7 @@ section.hero-off-white {
   grid-template-columns: 1.2fr 0.9fr 0.9fr;
   grid-template-rows: 1fr 1fr;
   gap: 16px;
-  height: 600px;
+  height: 800px;
 }
 
 /* Card base */
@@ -1294,7 +1292,7 @@ section.hero-off-white {
 @media (max-width: 1023px) {
   .bento-grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: auto;git add
   }
 
   .bento-large {
