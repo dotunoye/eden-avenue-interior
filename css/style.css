@@ -91,8 +91,8 @@
 
 html {
   scroll-behavior: smooth;
-  width: 100%;
-  position: relative;
+  /* width: 100%;
+  position: relative; */
 }
 
 body {
@@ -101,8 +101,8 @@ body {
   line-height: 1.8;
   color: var(--color-black);
   background-color: var(--color-white);
-  width: 100%;
-  position: relative;
+  /* width: 100%;
+  position: relative; */
 }
 
 @media (max-width: 767px) {
@@ -194,11 +194,11 @@ section {
   padding: 0 var(--spacing-md);
 }
 
-img {
+/* img {
   max-width: 100%;
   height: auto;
-  object-fit: cover; /* Keeps your luxury images looking sharp */
-}
+  object-fit: cover; /* Keeps your luxury images looking sharp 
+} */
 
 /* 5. FLOATING PILL NAVIGATION */
 
@@ -852,7 +852,6 @@ section.hero-off-white {
   background: #FFFFFF;
   position: relative;
   z-index: 1;
-  overflow-x: hidden;
   width: 100%;
 }
 .backstory {
