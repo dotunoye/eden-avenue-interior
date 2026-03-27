@@ -4672,4 +4672,37 @@ textarea:focus {
   color: var(--color-grey);
 }
 
+/* Hide on Desktop */
+.mobile-swipe-cue {
+  display: none; 
+}
+
+/* Mobile Execution */
+@media (max-width: 768px) {
+  .mobile-swipe-cue {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligns it to the right side where they need to scroll */
+    gap: 8px;
+    padding: 0 20px 24px; /* Matches your container padding */
+    color: rgba(255, 255, 255, 0.6); /* Muted, premium text color */
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .mobile-swipe-cue svg {
+    width: 16px;
+    height: 16px;
+    /* The subtle nudge animation */
+    animation: swipeNudge 2s ease-in-out infinite; 
+  }
+}
+
+/* The Keyframes */
+@keyframes swipeNudge {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(6px); opacity: 1; }
+}
+
 /* End of stylesheet */
