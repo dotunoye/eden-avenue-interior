@@ -4702,4 +4702,105 @@ textarea:focus {
   50% { transform: translateX(6px); opacity: 1; }
 }
 
+/* ============================================
+   PARTNERS SECTION
+   ============================================ */
+.partners-section {
+  padding-block: 5rem;
+  background: var(--bg); /* Assuming you are still using your root variables */
+  position: relative;
+  z-index: 1;
+}
+
+
+/* The Grid System */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* The Card Frame */
+.partner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  transition: all var(--transition);
+  cursor: pointer;
+  background: rgba(195, 195, 195, 0.096);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-teal);
+  border-radius: 8px;
+  padding: 32px;
+  transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 128, 128, 0.4); /* Subtle teal glow on hover */
+}
+
+/* The Logo Wrapper (Locks aspect ratio constraints) */
+.partner-logo-wrapper {
+  height: 60px; /* Forces all logos to behave within the same height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* The Grayscale Magic */
+.partner-logo {
+  max-height: 100%;
+  max-width: 140px;
+  object-fit: contain;
+  transition: all 0.4s ease;
+}
+
+.partner-card:hover .partner-logo {
+  filter: grayscale(0%) opacity(100%);
+}
+
+/* The Brand Name Text */
+.partner-name {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color var(--transition);
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.partner-card:hover .partner-name {
+  color: var(--text);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+  .partners-grid {
+    grid-template-columns: 1fr 1fr; /* 2 columns on mobile so it doesn't get too long */
+    gap: 1rem;
+  }
+  
+  .partner-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .partner-logo-wrapper {
+    height: 45px;
+  }
+  
+  .partner-name {
+    font-size: 0.75rem;
+  }
+}
+
 /* End of stylesheet */
