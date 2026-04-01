@@ -1677,11 +1677,10 @@ footer {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: clamp(3rem, 3vw, 3rem);
-  margin-bottom: clamp(1rem, 1vw, 3rem);
+  gap: clamp(2rem, 3vw, 3rem);
   justify-content: center;
   border-top: 1px solid var(--color-teal);
-  padding: clamp(3rem, 2vw, 4rem) clamp(1rem, 2vw, 2rem);
+  padding: clamp(2rem, 2vw, 4rem) clamp(1rem, 2vw, 2rem);
 }
 
 .footer-section h4 {
@@ -1731,10 +1730,36 @@ footer {
   font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 }
 
+/* Container for the icons */
 .footer-socials {
   display: flex;
-  gap: 20px;
   align-items: center;
+  gap: 1.0rem;          /* Consistent, breathable spacing */
+  flex-wrap: wrap;      /* Prevents them from squishing on small phones */
+}
+
+/* The clickable link area */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--subtle, #9ca3af); /* Assuming you're still using your root variables */
+  transition: all 0.3s ease;
+  padding: 0.5rem;      /* Increases touch target for mobile without warping the SVG */
+  border-radius: 50%;   /* Gives a clean hit-box */
+}
+
+/* The actual SVG sizing */
+.social-icon {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease;
+}
+
+/* Luxury hover state */
+.social-link:hover {
+  color: var(--text, #ffffff); /* Pop to full white or your brand accent */
+  transform: translateY(-3px); /* Smooth agency lift effect */
 }
 
 .social-link {
