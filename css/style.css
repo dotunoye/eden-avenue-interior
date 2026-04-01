@@ -4179,7 +4179,7 @@ textarea:focus {
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 300;
-  color: #8C92AC;
+  color: var(--color-black);
   line-height: 1.9;
   margin-bottom: 12px;
 }
