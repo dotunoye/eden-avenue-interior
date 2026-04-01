@@ -1730,36 +1730,32 @@ footer {
   font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 }
 
-/* Container for the icons */
 .footer-socials {
   display: flex;
   align-items: center;
-  gap: 1.0rem;          /* Consistent, breathable spacing */
-  flex-wrap: wrap;      /* Prevents them from squishing on small phones */
+  gap: 1.0rem;   
+  flex-wrap: wrap;
 }
 
-/* The clickable link area */
 .social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--subtle, #9ca3af); /* Assuming you're still using your root variables */
+  color: var(--subtle, #9ca3af);
   transition: all 0.3s ease;
-  padding: 0.5rem;      /* Increases touch target for mobile without warping the SVG */
-  border-radius: 50%;   /* Gives a clean hit-box */
+  padding: 0.5rem; 
+  border-radius: 50%;
 }
 
-/* The actual SVG sizing */
 .social-icon {
   width: 22px;
   height: 22px;
   transition: transform 0.3s ease;
 }
 
-/* Luxury hover state */
 .social-link:hover {
-  color: var(--text, #ffffff); /* Pop to full white or your brand accent */
-  transform: translateY(-3px); /* Smooth agency lift effect */
+  color: var(--text, #ffffff);
+  transform: translateY(-3px);
 }
 
 .social-link {
@@ -1787,6 +1783,46 @@ footer {
 
 .social-link:hover .social-icon {
   transform: scale(1.1); /* Slight pop */
+}
+
+/* Hide on Desktop by default */
+.mobile-scroll-cue {
+  display: none; 
+}
+
+/* Show only on Mobile (Adjust the 768px if your mobile breakpoint is different) */
+@media (max-width: 768px) {
+  .mobile-scroll-cue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: var(--subtle, #9ca3af); /* Uses your muted gray so it doesn't overpower the white H2 */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+
+  .mobile-scroll-cue svg {
+    width: 16px;
+    height: 16px;
+    /* This applies the subtle left-to-right push */
+    animation: swipeRight 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  /* The Animation Keyframes */
+  @keyframes swipeRight {
+    0%, 100% { 
+      transform: translateX(0); 
+      opacity: 0.5;
+    }
+    50% { 
+      transform: translateX(6px); 
+      opacity: 1;
+    }
+  }
 }
 /* 14. FOOTER - Dark background with brand, links, contact, social */
 /* 
@@ -4435,17 +4471,15 @@ textarea:focus {
 
   /* 3. Strip the sticky physics and build mobile cards */
   .values-panel {
-    position: relative !important; /* Kills the sticky bug */
+    position: relative !important;
     top: auto !important;
     height: auto !important;
-    min-height: 420px !important; /* Gives the card a solid, premium height */
-    min-width: 85vw !important; /* Leaves 15% of the screen for the next card */
+    min-height: 420px !important;
+    min-width: 85vw !important;
     scroll-snap-align: center !important;
-    padding: 32px 24px !important;
-    border-radius: 12px !important; /* Softens the edges */
+    padding: 0px 4px !important;
+    border-radius: 12px !important;
     box-shadow: none !important;
-    
-    /* Center content vertically inside the new card */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
