@@ -117,7 +117,7 @@
               <span class="portfolio-modal__location" id="modal-location"></span>
               <h2 class="portfolio-modal__name" id="modal-name"></h2>
             </div>
-            <a href="javascript:void(0);" class="btn-teal btn-pill portfolio-modal__cta">Book a Session</a>
+            <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill portfolio-modal__cta">Book a Session</a>
           </div>
         
           <p class="portfolio-modal__desc" id="modal-desc"></p>
@@ -125,7 +125,7 @@
           <div class="portfolio-modal__footer">
             <span class="portfolio-modal__price" id="modal-price"></span>
           </div>
-          <a href="javascript:void(0);" class="btn-teal btn-pill portfolio-modal__cta-mobile">Book a Session</a>
+          <a href="${generateWhatsAppLink(item.name, category)}" class="btn-teal btn-pill portfolio-modal__cta-mobile">Book a Session</a>
         </div>
       </div>
     </div>
