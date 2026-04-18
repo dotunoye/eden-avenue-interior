@@ -5097,6 +5097,12 @@ textarea:focus {
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+@media (max-width: 500px) {
+  .btn-proposal-link {
+    font-size: 0.5rem;
+  }
+}
+
 .btn-proposal-link svg {
   width: 18px;
   height: 18px;
