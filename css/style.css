@@ -98,7 +98,6 @@ html {
 body {
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.8;
   color: var(--color-black);
   background-color: var(--color-white);
   width: 100%;
@@ -1175,7 +1174,7 @@ section.hero-off-white {
   grid-template-columns: 1.2fr 0.9fr 0.9fr;
   grid-template-rows: 1fr 1fr;
   gap: 16px;
-  height: 800px;
+  height: 600px;
 }
 
 /* Card base */
@@ -2589,8 +2588,8 @@ textarea {
 /* ── SECTIONS ── */
 /* All three bare <section> tags */
 section {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   position: relative;
 }
  
@@ -2914,45 +2913,7 @@ section {
     height: 280px;
   }
 }
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 21. RESPONSIVE ADJUSTMENTS */
+ /* 21. RESPONSIVE ADJUSTMENTS */
 
 @media (max-width: 1024px) {
   nav.pill-nav .nav-links {
@@ -2988,7 +2949,7 @@ section {
   }
 
   section {
-    padding: clamp(40px, 8vw, 60px) 0;
+    padding: clamp(20px, 8vw, 30px) 0;
   }
 
   h1 {
@@ -4840,6 +4801,321 @@ textarea:focus {
 
 .partner-card:hover .partner-name {
   color: var(--text);
+}
+
+/* ==========================================================
+   EDEN AVENUE: PROPOSAL DOCUMENT & FLOATING BTN
+   ========================================================== */
+
+.minimal-nav {
+  padding: 1rem 2rem; /* Shrunk the padding to save vertical space */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The Back Button */
+.nav-back-btn {
+  display: flex;
+  text-decoration: none;
+  color: #555555;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  width: 20px; /* Fixed width to balance the layout */
+}
+
+.nav-back-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-back-btn:hover {
+  color: #008080; /* Flashes Eden Teal */
+}
+
+.nav-back-btn:hover svg {
+  transform: translateX(-4px); /* Arrow subtly slides left on hover */
+}
+
+/* The Title */
+.minimal-nav .nav-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* The Invisible Spacer */
+.nav-spacer {
+  width: 80px; /* Must match the width of .nav-back-btn exactly */
+}
+
+@media (max-width: 768px) {
+  .minimal-nav { padding: 1rem; position: sticky;}
+  .minimal-nav .nav-title { font-size: 1rem; }
+}
+
+.minimal-nav .logo-img { 
+  height: 35px; 
+  width: auto; 
+}
+
+.minimal-nav .nav-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+  align-content: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Document Wrapper and Background */
+.proposal-wrapper {
+  background-color: #f9f9f9;
+  padding: 40px 24px;
+  font-family: 'Lato', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.proposal-document {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 5rem 2rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  color: #333333;
+}
+
+/* Typography & Headings */
+.proposal-header {
+  justify-items: center;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.proposal-header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3rem;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.proposal-header p {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #008080; 
+  font-weight: 700;
+  font-size: 0.9rem;
+  
+}
+
+.proposal-section {
+  /* margin-bottom: 4rem; */
+}
+
+.proposal-section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.proposal-section h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 3px;
+  background-color: #008080;
+}
+
+.proposal-section p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-weight: 300;
+  color: #555555;
+}
+
+/* Pricing Grid */
+.pricing-block {
+  background: #e0dfdf80;
+  border: 1px solid #eaeaea;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.pricing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-header h3 {
+  font-size: 1.3rem;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.pricing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.pricing-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed #eaeaea;
+  color: #555555;
+}
+
+.pricing-list li span:last-child {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Lists */
+.doc-list {
+  padding-left: 1rem;
+  color: #555555;
+  line-height: 1.8;
+}
+
+.doc-list li {
+  margin-bottom: 0.5rem;
+}
+
+.doc-list strong {
+  color: #1a1a1a;
+}
+
+/* The Floating PDF Button */
+.floating-pdf-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #008080; /* Eden Teal */
+  color: #ffffff !important;
+  padding: 1rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(0, 128, 128, 0.35);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.floating-pdf-btn:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 128, 128, 0.45);
+}
+
+.floating-pdf-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  /* .proposal-document { padding: 3rem 1.5rem; } */
+  .proposal-header h1 { font-size: 2.2rem; }
+  .pricing-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .floating-pdf-btn { 
+    bottom: 25px; 
+    right: 25px; 
+    padding: 0.8rem 1.4rem; 
+    font-size: 0.85rem; 
+  }
+}
+
+@media (max-width: 500px) {
+.proposal-document {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff00;
+  padding: 0rem 0rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0);
+  color: #333333;
+}
+}
+
+/* ==========================================================
+   EDEN AVENUE: PROPOSAL CTA BUTTON (HOME PAGE)
+   ========================================================== */
+
+.proposal-cta-wrapper {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 5rem; /* Massive breathing room so it doesn't crowd the next section */
+  width: 100%;
+}
+
+.btn-proposal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 2.5rem;
+  background-color: transparent;
+  color: #1a1a1a; /* Dark text */
+  border: 1px solid #1a1a1a; /* Crisp dark border */
+  border-radius: 50px; /* High-end pill shape */
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.btn-proposal-link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+/* The Luxury Hover Reveal */
+.btn-proposal-link:hover {
+  background-color: #008080; /* Eden Teal */
+  color: #ffffff;
+  border-color: #008080;
+  box-shadow: 0 10px 20px rgba(0, 128, 128, 0.2);
+}
+
+.btn-proposal-link:hover svg {
+  transform: translateX(5px); /* Arrow subtly pushes forward */
 }
 
 /* Mobile Adjustments */
