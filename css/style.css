@@ -4926,10 +4926,6 @@ textarea:focus {
   
 }
 
-.proposal-section {
-  /* margin-bottom: 4rem; */
-}
-
 .proposal-section h2 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.8rem;
@@ -5079,13 +5075,15 @@ textarea:focus {
   text-align: center;
   margin-top: 2rem;
   padding: 0px 24px;
+  width: 100%;
 }
 
 .btn-proposal-link {
+  align-content: space-between;
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 1rem 3.5rem;
+  padding: 1rem 2.5rem;
   background-color: transparent;
   color: #1a1a1a; /* Dark text */
   border: 1px solid #1a1a1a; /* Crisp dark border */
