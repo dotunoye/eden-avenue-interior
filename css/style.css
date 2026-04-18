@@ -5100,6 +5100,7 @@ textarea:focus {
 @media (max-width: 500px) {
   .btn-proposal-link {
     font-size: 0.7rem;
+    padding: 1rem 2rem;
   }
 }
 
