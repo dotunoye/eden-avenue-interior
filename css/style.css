@@ -5083,14 +5083,14 @@ textarea:focus {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 1rem 2.5rem;
+  padding: 1rem 4rem;
   background-color: transparent;
   color: #1a1a1a; /* Dark text */
   border: 1px solid #1a1a1a; /* Crisp dark border */
   border-radius: 50px; /* High-end pill shape */
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   text-decoration: none;
@@ -5099,7 +5099,7 @@ textarea:focus {
 
 @media (max-width: 500px) {
   .btn-proposal-link {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
   }
 }
 
