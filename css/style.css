@@ -4960,7 +4960,7 @@ textarea:focus {
 .pricing-block {
   background: #e0dfdf80;
   border: 1px solid #eaeaea;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 4px;
   margin-bottom: 2rem;
 }
@@ -5078,22 +5078,21 @@ textarea:focus {
 .proposal-cta-wrapper {
   text-align: center;
   margin-top: 2rem;
-  margin-bottom: 5rem; /* Massive breathing room so it doesn't crowd the next section */
-  width: 100%;
+  padding: 0px 24px;
 }
 
 .btn-proposal-link {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 1rem 2.5rem;
+  padding: 1rem 3.5rem;
   background-color: transparent;
   color: #1a1a1a; /* Dark text */
   border: 1px solid #1a1a1a; /* Crisp dark border */
   border-radius: 50px; /* High-end pill shape */
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   text-decoration: none;
