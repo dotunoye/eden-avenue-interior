@@ -4956,7 +4956,7 @@ textarea:focus {
 .pricing-block {
   background: #e0dfdf80;
   border: 1px solid #eaeaea;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 4px;
   margin-bottom: 2rem;
 }
@@ -5004,6 +5004,7 @@ textarea:focus {
 
 .doc-list li {
   margin-bottom: 0.5rem;
+  font-weight: 300;
 }
 
 .doc-list strong {
