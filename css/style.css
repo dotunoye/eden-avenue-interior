@@ -4901,7 +4901,7 @@ textarea:focus {
   padding: 5rem 2rem;
   border-radius: 4px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-  color: #333333;
+  color: #1a1a1a;
 }
 
 /* Typography & Headings */
@@ -4949,7 +4949,7 @@ textarea:focus {
   line-height: 1.8;
   margin-bottom: 1rem;
   font-weight: 300;
-  color: #555555;
+  color: #1a1a1a;
 }
 
 /* Pricing Grid */
@@ -4987,7 +4987,8 @@ textarea:focus {
   justify-content: space-between;
   padding: 0.75rem 0;
   border-bottom: 1px dashed #eaeaea;
-  color: #555555;
+  color: #1a1a1a;
+  font-weight: 300;
 }
 
 .pricing-list li span:last-child {
@@ -4998,7 +4999,7 @@ textarea:focus {
 /* Lists */
 .doc-list {
   padding-left: 1rem;
-  color: #555555;
+  color: #1a1a1a;
   line-height: 1.8;
 }
 
@@ -5064,7 +5065,7 @@ textarea:focus {
   padding: 0rem 0rem;
   border-radius: 4px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0);
-  color: #333333;
+  color: #1a1a1a;
 }
 }
 
