@@ -36,8 +36,6 @@ async function initSite() {
     // This is the magic line. It overwrites your old static data with LIVE data.
     window.siteData = result; 
 
-    // Now that data is loaded, run your existing init logic
-    setupApp(); 
   } catch (error) {
     console.error("Sanity connection failed. Check your Project ID or Network.", error);
   }
