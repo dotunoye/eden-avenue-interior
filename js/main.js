@@ -114,10 +114,10 @@ const WHATSAPP_NUMBERS = {
 };
 
 const WHATSAPP_MESSAGES = {
-  interiors: (name) => `Hi, I saw the *${name}* project on your website and I'd like to discuss something similar for my space.\n\nView it here: https://edenavenue.com/interiors.html`,
-  homes: (name) => `Hi, I'm interested in the *${name}* from your Homes collection. Please send me more details.\n\nView it here: https://edenavenue.com/homes.html`,
-  drapes: (name) => `Hi, I saw the *${name}* on your website and I'd like to get a quote for my windows.\n\nView it here: https://edenavenue.com/drapes.html`,
-  flooring: (name) => `Hi, I saw the *${name}* on your website and I'd like to get a quote for my space.\n\nView it here: https://edenavenue.com/flooring.html`,
+  interiors: (name) => `Hi, I saw the *${name}* project on your website and I'd like to discuss something similar for my space.\n\nView it here: https://edenavenueinteriors.com/interiors`,
+  homes: (name) => `Hi, I'm interested in the *${name}* from your Homes collection. Please send me more details.\n\nView it here: https://edenavenueinteriors.com/homes`,
+  drapes: (name) => `Hi, I saw the *${name}* on your website and I'd like to get a quote for my windows.\n\nView it here: https://edenavenueinteriors.com/drapes`,
+  flooring: (name) => `Hi, I saw the *${name}* on your website and I'd like to get a quote for my space.\n\nView it here: https://edenavenueinteriors.com/flooring`,
 };
 
 function generateWhatsAppLink(projectName, category = 'interiors') {
@@ -443,7 +443,7 @@ function initProcessScroll() {
 
 /* ========== PAGE INITIALIZATION ========== */
 
-async function initEdenAvenue() {
+async function initEdenAvenueinteriors() {
   // Init nav and UI immediately — doesn't need data
   initNavigation();
   initTypewriter();
@@ -480,7 +480,7 @@ async function initEdenAvenue() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', initEdenAvenue);
+document.addEventListener('DOMContentLoaded', initEdenAvenueinteriors);
 
 /* ========== ERROR HANDLING ========== */
 document.addEventListener('error', (e) => {
