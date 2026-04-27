@@ -36,6 +36,8 @@ async function initSite() {
     // This is the magic line. It overwrites your old static data with LIVE data.
     window.siteData = result; 
 
+    // Now that data is loaded, run your existing init logic
+    setupApp(); 
   } catch (error) {
     console.error("Sanity connection failed. Check your Project ID or Network.", error);
   }
@@ -193,11 +195,14 @@ function openModal(card) {
     price.style.display = 'none';
   }
 
-  // Update WhatsApp CTA button
-if (cta) {
-  cta.href = generateWhatsAppLink(card.dataset.name, card.dataset.category);
-    cta.setAttribute('aria-label', `Book consultation via WhatsApp for ${card.dataset.name}`);
-  }
+  // Update WhatsApp CTA buttons (desktop + mobile)
+  const ctaButtons = modal.querySelectorAll('.portfolio-modal__cta, .portfolio-modal__cta-mobile');
+  const whatsappLink = generateWhatsAppLink(card.dataset.name, card.dataset.category);
+  
+  ctaButtons.forEach(button => {
+    button.href = whatsappLink;
+    button.setAttribute('aria-label', `Book consultation via WhatsApp for ${card.dataset.name}`);
+  });
 
   // Show modal
   modal.classList.add('active');
