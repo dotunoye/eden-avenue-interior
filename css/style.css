@@ -4513,7 +4513,7 @@ textarea:focus {
   .team-carousel,
   .testimonials-container {
     padding: 0 5%; /* Offset to allow peeping */
-  }
+  } 
   .team-card,
   .testimonial-quote {
     min-width: 85%; /* Leaves 15% of screen for next card */
